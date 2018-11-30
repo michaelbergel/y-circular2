@@ -1,4 +1,5 @@
 'use strict';
+
 const bodyParser = require('body-parser');
 const express = require('express');
 
@@ -27,7 +28,6 @@ nunjucks.configure('views', {
 app.set('view engine', 'html');
 
 
-
 // Configure our app to serve "static" assets,
 // new_eventlike client-side images, js, and css out of
 // a directory called "static".
@@ -40,9 +40,8 @@ app.get('/events/new', indexControllers.formSubmit);
 app.post('/events/new', indexControllers.formSubmit);
 app.get('/about', indexControllers.about);
 
-//Controller for creating detailed pages
+// Controller for creating detailed pages
 app.get('/events/:eventID', indexControllers.eventDetail);
 app.post('/events/:eventID', indexControllers.eventDetail);
 
 module.exports = app;
-
