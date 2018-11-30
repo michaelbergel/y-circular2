@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block body %}
-    <p>
+    <p class="yblue">
         {{salutation}}
     </p>
 
@@ -11,9 +11,9 @@
         <ul>
             {% for event in events %}
                 <li class="event" id="event-{{ event.id }}">
-                    <a class="list-group-item" id="title" href='/events/{{ event.id }}' onclick="doWithThisElement(this.id)">
-                        <h1 class="list-group-item-heading">{{ event.title }}</h1>
-                        <time class="list-group-item-text">{{ event.date }}</time>
+                    <a class="list-group-item" id="item" href='/listing/{{ event.id }}' onclick="doWithThisElement(this.id)">
+                        <h1 class="list-group-item-heading">{{ event.item }}</h1>
+                        <span class="list-group-item-text">{{ event.dailyPrice }}</span>
                     </a>
                 </li>
                 <br>
@@ -21,9 +21,9 @@
         </ul>
     </div>
 
-    <div>
-        <a class="nav-link" id="new" href="/events/new">Create an Event</a>
-    </div>
+    <!--<div>-->
+    <!--    <a class="nav-link" id="new" href="/events/new">Create an Event</a>-->
+    <!--</div>-->
 {% endblock %}
 
 <!-- {% block late_loading_js %}

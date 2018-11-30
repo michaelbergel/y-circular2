@@ -3,41 +3,50 @@
 /**
  * An Array of all the events
  */
-const allEvents = [
+const allListings = [
     {
         id: 0,
-        title: 'SOM House Party',
+        item: 'Vacuum',
         // Note that JavaScript months are zero-indexed,
         // so, month zero is January. This is Jan 17th
         // 2018 at 4:30pm local time.
-        date: new Date(2018, 0, 17, 16, 30, 0),
-        image: 'http://i.imgur.com/pXjrQ.gif',
-        location: 'Kyle \'s house',
-        attending: ['kyle.jensen@yale.edu', 'kim.kardashian@yale.edu'],
+        firstAvail: new Date(2018, 0, 17, 16, 30, 0),
+        lastAvail: new Date(2018, 0, 17, 16, 30, 0),
+        image: 'https://i.imgur.com/51RWsi1.jpg',
+        dailyPrice: '$3.00',
     },
     {
         id: 1,
-        title: 'BBQ party for hackers and nerds',
-        date: new Date(2017, 8, 1, 19, 0, 0),
-        image: 'http://i.imgur.com/7pe2k.gif',
-        location: 'Sharon Oster\'s house',
-        attending: ['kyle.jensen@yale.edu', 'kim.kardashian@yale.edu'],
+        item: 'Dumbbells',
+        // Note that JavaScript months are zero-indexed,
+        // so, month zero is January. This is Jan 17th
+        // 2018 at 4:30pm local time.
+        firstAvail: new Date(2018, 0, 17, 16, 30, 0),
+        lastAvail: new Date(2018, 0, 17, 16, 30, 0),
+        image: 'https://i.imgur.com/0ml3vxj.mp4',
+        dailyPrice: '$6.00',
     },
     {
         id: 2,
-        title: 'BBQ for managers',
-        date: new Date(2017, 12, 20, 18, 0, 0),
-        image: 'http://i.imgur.com/CJLrRqh.gif',
-        location: 'Barry Nalebuff\'s house',
-        attending: ['kim.kardashian@yale.edu'],
+        item: 'Squatty Potty',
+        // Note that JavaScript months are zero-indexed,
+        // so, month zero is January. This is Jan 17th
+        // 2018 at 4:30pm local time.
+        firstAvail: new Date(2018, 0, 17, 16, 30, 0),
+        lastAvail: new Date(2018, 0, 17, 16, 30, 0),
+        image: 'https://i.imgur.com/e7klUOn.jpg',
+        dailyPrice: '$2.00',
     },
     {
         id: 4,
-        title: 'Cooking lessons for the busy business student',
-        date: new Date(2018, 3, 2, 19, 0, 0),
-        image: 'http://i.imgur.com/02KT9.gif',
-        location: 'Yale Farm',
-        attending: ['homer.simpson@yale.edu'],
+        item: 'Blow Dryer',
+        // Note that JavaScript months are zero-indexed,
+        // so, month zero is January. This is Jan 17th
+        // 2018 at 4:30pm local time.
+        firstAvail: new Date(2018, 0, 17, 16, 30, 0),
+        lastAvail: new Date(2018, 0, 17, 16, 30, 0),
+        image: 'https://i.imgur.com/lBmo4DU.gif',
+        dailyPrice: '$2.50',
     },
 ];
 
@@ -46,9 +55,9 @@ const allEvents = [
  * Returns the first event that has a particular id.
  */
 function getById(id) {
-    for (let i = 0; i < allEvents.length; i += 1) {
-        if (id === allEvents[i].id) {
-            return allEvents[i];
+    for (let i = 0; i < allListings.length; i += 1) {
+        if (id === allListings[i].id) {
+            return allListings[i];
         }
     }
     return null;
@@ -56,11 +65,11 @@ function getById(id) {
 
 
 function getMaxId() {
-    return Math.max(...allEvents.map(x => x.id));
+    return Math.max(...allListings.map(x => x.id));
 }
 
 module.exports = {
-    all: allEvents,
+    all: allListings,
     getById,
     getMaxId,
 };

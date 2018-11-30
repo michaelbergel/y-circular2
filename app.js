@@ -34,14 +34,13 @@ app.set('view engine', 'html');
 app.use('/static', express.static('static'));
 
 // Now, attach our "controllers" to our "routes".
-app.get('/', indexControllers.index);
-app.get('/about', indexControllers.about);
+app.get('/index', indexControllers.index);
+app.get('/', indexControllers.homepage);
 app.get('/events/new', indexControllers.formSubmit);
 app.post('/events/new', indexControllers.formSubmit);
-app.get('/about', indexControllers.about);
 
 // Controller for creating detailed pages
-app.get('/events/:eventID', indexControllers.eventDetail);
-app.post('/events/:eventID', indexControllers.eventDetail);
+app.get('/listing/:eventID', indexControllers.itemDetails);
+app.post('/listing/:eventID', indexControllers.itemDetails);
 
 module.exports = app;
