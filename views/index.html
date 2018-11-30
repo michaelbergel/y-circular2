@@ -9,11 +9,11 @@
 
     <div class="list-group list-group-mine">
         <ul>
-            {% for event in events %}
+            {% for listing in listings %}
                 <li class="event" id="event-{{ event.id }}">
-                    <a class="list-group-item" id="title" href='/events/{{ event.id }}' onclick="doWithThisElement(this.id)">
-                        <h1 class="list-group-item-heading">{{ event.title }}</h1>
-                        <time class="list-group-item-text">{{ event.date }}</time>
+                    <a class="list-group-item" id="title" href='/listing/{{ listing.id }}' onclick="doWithThisElement(this.id)">
+                        <h1 class="list-group-item-heading">{{ listing.object }}</h1>
+                        <time class="list-group-item-text">{{ listing.price }}</time>
                     </a>
                 </li>
                 <br>
@@ -22,7 +22,7 @@
     </div>
 
     <div>
-        <a class="nav-link" id="new" href="/events/new">Create an Event</a>
+        <a class="nav-link" id="new" href="/listing/new">List an item</a>
     </div>
 {% endblock %}
 
