@@ -16,57 +16,34 @@
 {% endif %}
 
 <form action="" method="post">
-    <label for="title">Title</label>
-    <input name="title_event" type="text"/>
-    <br />
-    <label for="location">Location</label>
-    <input name="loc" type="text"/>
-    <br />
-    <label for="image">Image</label>
-    <input name="pic" type="text"/>
-    <br />
-    <label for="year">Year</label>
-    <select name="date_event">
-        <option>2018</option>
-        <option>2019</option>
-    </select>
-    <br />
-    <label for="month">Month</label>
-    <select name="date_event">
-        <option>January</option>
-        <option>February</option>
-        <option>March</option>
-        <option>April</option>
-        <option>May</option>
-        <option>June</option>
-        <option>July</option>
-        <option>August</option>
-        <option>September</option>
-        <option>October</option>
-        <option>November</option>
-        <option>December</option>
-    </select>
-    <br />
-    <label for="day">Day</label>
-    <select name="date_event">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>6</option>
-        <option>7</option>
-        <option>8</option>
-        <option>9</option>
-        <option>10</option>
-        <option>11</option>
-        <option>12</option>
-        <option>13</option>
-        <option>14</option>
-        <option>15</option>
-        <option>16</option>
-        <option>17</option>
-        <option>18</option>
+    <p>
+    <div>
+    <label for="name">Name</label>
+    <input name="name_listing" type="text"/>
+    </div>
+    </p>
+
+
+    <p>
+    <div>
+    <label for="email">e-mail</label>
+    <input name="email" type="text"/>
+    </div>
+    </p>
+
+
+    <p>
+    <div>
+    <label for="school">School</label>
+    <input name="school" type="text"/>
+    </div>
+    </p>
+
+
+    <p>
+    <div>
+    <label for="class_">Class</label>
+    <select name="class">
         <option>19</option>
         <option>20</option>
         <option>21</option>
@@ -75,49 +52,51 @@
         <option>24</option>
         <option>25</option>
         <option>26</option>
-        <option>27</option>
-        <option>28</option>
-        <option>29</option>
-        <option>30</option>
-        <option>31</option>
+        <option>NA</option>
     </select>
-    <br />
-    <label for="hour">Hour</label>
-    <select name="date_event">
-        <option>0</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>6</option>
-        <option>7</option>
-        <option>8</option>
-        <option>9</option>
-        <option>10</option>
-        <option>11</option>
-        <option>12</option>
-        <option>13</option>
-        <option>14</option>
-        <option>15</option>
-        <option>16</option>
-        <option>17</option>
-        <option>18</option>
-        <option>19</option>
-        <option>20</option>
-        <option>21</option>
-        <option>22</option>
-        <option>23</option>
-    </select>
-    <br />
-    <label for="minute">Minute</label>
-    <select name="date_event">
-        <option>00</option>
-        <option>30</option>
-    </select>
-    <br />
+    </div>
+    </p>
+
+
+    <p>
+    <div>
+    <label for="phone">Phone number</label>
+    <input name="phone" type="tel"/>
+    </div>
+    </p>
+
+
+
+    <p>
+    <div>
+    <label for="object">What object do you want to list?</label>
+    <input name="object" type="text" maxlength="50"/>
+    </div>
+    </p>
+
+
+    <p>
+    <div>
+        <label for="price">Price per day</label>
+        <span class="input-group-addon">$</span>
+        <input type="number" name="price" />
+    </div>
+    </p>
+
+
+    <p>
+    <div>
+    <label for="image">Image</label>
+    <input name="pic" type="text"/>
+    </div>
+    </p>
+
+    <p>
+    <div>
     <button type="submit" name="submit" class="btn btn-info">Submit</button>
-    <br></br>
+    </div>
+    </p>
+
 </form>
 
 {% endblock %}

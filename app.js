@@ -36,12 +36,12 @@ app.use('/static', express.static('static'));
 // Now, attach our "controllers" to our "routes".
 app.get('/', indexControllers.index);
 app.get('/about', indexControllers.about);
-app.get('/events/new', indexControllers.formSubmit);
-app.post('/events/new', indexControllers.formSubmit);
+app.get('/listing/new', indexControllers.formSubmit);
+app.post('/listing/new', indexControllers.formSubmit);
 app.get('/about', indexControllers.about);
 
 // Controller for creating detailed pages
-app.get('/events/:eventID', indexControllers.eventDetail);
-app.post('/events/:eventID', indexControllers.eventDetail);
+app.get('/listing/:listingID', indexControllers.eventDetail);
+app.post('/listing/:listingID', indexControllers.eventDetail);
 
 module.exports = app;
