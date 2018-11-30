@@ -11,7 +11,7 @@ function index(request, response) {
         events: eventModels.all,
     };
     response.render('index', contextData);
-   
+
 }
 
 function about(request, response) {
@@ -21,7 +21,7 @@ function about(request, response) {
 
     };
     response.render('about', contextData);
-   
+
 }
 
 
@@ -44,32 +44,32 @@ function form(request, response) {
 
     };
     response.render('form', contextData);
-   
+
 }
 
 function formSubmit(request, response) {
-    
+
     // The form data are in `request.body`. We need to get
     // these data out and use them to create a new event,
     // or return some kind of error to the user if they
     // submitted invalid data.
-    
+
     // Start with an empty array of errors
     const contextData ={
         title: 'Create event',
         salutation: 'Let\'s create a new event!',
         errors: [],
     };
-    
+
     if (request.method =='POST'){
     const errors = [];
 
-    
-    
+
+
     if (!request.body.title_event || request.body.title_event.length > 51) {
         errors.push('Bad title for event!');
     }
-    
+
     if (errors.length === 0){
         // Create a new event! Find a good id (e.g. max existing id + 1)
         const newEvent = {
@@ -91,8 +91,8 @@ function formSubmit(request, response) {
 
 
     return response.render('form', contextData);
-   
-} 
+
+}
 
 
 function eventDetail(req, res) {
@@ -102,7 +102,7 @@ function eventDetail(req, res) {
     if (!theEvent) {
         res.send('could not find event! should send 404');
     }else{
-        res.render('event_details',theEvent); 
+        res.render('event_details',theEvent);
     }
 }
 
