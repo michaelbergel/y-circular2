@@ -5,23 +5,23 @@
         {{salutation}}
     </p>
 
-    <h1 id="title">{{ ev.title }}</h1>
-    <div><span id="date">{{ ev.date }}</span></div>
-    <div><span id="location">{{ ev.location }}</span></div>
+    <h1 id="title">{{ title }}</h1>
+    <div><span id="date">{{ date }}</span></div>
+    <div><span id="location">{{ location }}</span></div>
     <div>What to contribute? <a id="donate" href='/donate'>Donate</a> now!</div>
-    <div><img src="{{ event.image }}" alt="event image" id="image" /></div>
+    <div><img src="{{ image }}" alt="event image" id="image" /></div>
     <div>
-        {% if ev.attending != null %}
+        {% if attending != null %}
         Attendees:
         {% endif %}
         <ul class="list-group" id="attendees">
-            {% for attendee in ev.attending %}
+            {% for attendee in attending %}
                 <li class="list-group-item">{{ attendee }}</li>
             {% endfor %}
         </ul>
     </div>
     <div>
-        <form action="/rsvp/{{ event.id }}" method="post">
+        <form action="/events/{{id}}" method="post">
           <input type="email" id="email" name="email" />
           <button type="submit" class="btn btn-info" name="submit">Submit</button>
         </form>

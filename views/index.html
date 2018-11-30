@@ -4,12 +4,12 @@
     <p>
         {{salutation}}
     </p>
-    
+
     <title>{{ title }}</title>
-    
+
     <div class="list-group list-group-mine">
         <ul>
-            {% for event in eventData %}
+            {% for event in events %}
                 <li class="event" id="event-{{ event.id }}">
                     <a class="list-group-item" id="title" href='/events/{{ event.id }}' onclick="doWithThisElement(this.id)">
                         <h1 class="list-group-item-heading">{{ event.title }}</h1>
@@ -20,7 +20,7 @@
             {% endfor %}
         </ul>
     </div>
-    
+
     <div>
         <a class="nav-link" id="new" href="/events/new">Create an Event</a>
     </div>

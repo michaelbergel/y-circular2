@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // locally instead of a dependency that was installed as
 // specified in our `package.json` file, like "express".
 const indexControllers = require('./controllers/index.js');
-const eventControllers = require('./controllers/index.js'); 
+const eventControllers = require('./controllers/index.js');
 
 // Through this configuration, Nunjucks will "tell"
 // our Express app that it is handling the templates,
@@ -38,7 +38,7 @@ app.use('/static', express.static('static'));
 app.get('/', indexControllers.index);
 app.get('/events/new', eventControllers.formSubmit);
 app.post('/events/new', eventControllers.formSubmit);
-app.get('/about', indexControllers.about);  
+app.get('/about', indexControllers.about);
 
 app.get('/form', indexControllers.form );
 app.post('/form', indexControllers.formSubmit);
@@ -47,6 +47,7 @@ app.post('/form', indexControllers.formSubmit);
 app.get('/event_details', indexControllers.event_details);
 
 app.get('/events/:eventID', indexControllers.eventDetail);
+app.post('/events/:eventID', indexControllers.eventDetail);
 
 module.exports = app;
 
