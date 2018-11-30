@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <p>
+        {{salutation}}
+    </p>
+    
+    <title>{{ title }}</title>
+    
+    <div class="list-group list-group-mine">
+        <ul>
+            {% for event in eventData %}
+                <li class="event" id="event-{{ event.id }}">
+                    <a class="list-group-item" id="title" href='/events/{{ event.id }}' onclick="doWithThisElement(this.id)">
+                        <h1 class="list-group-item-heading">{{ event.title }}</h1>
+                        <time class="list-group-item-text">{{ event.date }}</time>
+                    </a>
+                </li>
+                <br>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <div>
+        <a class="nav-link" id="new" href="/events/new">Create an Event</a>
+    </div>
+{% endblock %}
+
+<!-- {% block late_loading_js %}
+<script src="/static/js/catgifs.js"></script>
+{% endblock %} -->

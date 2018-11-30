@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<p>
+    {{salutation}}
+</p>
+
+
+<div class="row">
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img class="col-md-4" id="vast-badger-headshot" src="/static/img/vito.png" alt="The Vast Badger" align="middle">
+            <p class="caption">
+                This is <span id="vast-badger-name">Vito</span>. He likes Toyotas over Jeeps.
+            </p>
+        </div>
+    </div>
+    
+    <div class="col-sm-6 col-md-4">    
+        <div class="thumbnail">
+            <img class="col-md-4" id="cloudy-penguin-headshot" src="/static/img/josh.jpeg" alt="The Cloudy Penguin" align="middle">
+            <p>
+                This is <span id="cloudy-penguin-name">Josh</span>. He enjoys belting tuneskies and has black hair.
+            </p>
+        </div>
+    </div>
+    
+  
+    <div class="col-sm-6 col-md-4">    
+        <div class="thumbnail">
+            <img class="col-md-4" id="relieved-nightingale-headshot" src="/static/img/bella.png" alt="The Relieved Nightingale" align="middle">
+            <p>
+                 This is <span id="relieved-nightingale-name">Bella</span>. She's having trouble keeping track of her cascading styles.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

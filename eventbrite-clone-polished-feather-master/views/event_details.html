@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <p>
+        {{salutation}}
+    </p>
+
+    <h1 id="title">{{ ev.title }}</h1>
+    <div><span id="date">{{ ev.date }}</span></div>
+    <div><span id="location">{{ ev.location }}</span></div>
+    <div>What to contribute? <a id="donate" href='/donate'>Donate</a> now!</div>
+    <div><img src="{{ event.image }}" alt="event image" id="image" /></div>
+    <div>
+        {% if ev.attending != null %}
+        Attendees:
+        {% endif %}
+        <ul class="list-group" id="attendees">
+            {% for attendee in ev.attending %}
+                <li class="list-group-item">{{ attendee }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <form action="/rsvp/{{ event.id }}" method="post">
+          <input type="email" id="email" name="email" />
+          <button type="submit" class="btn btn-info" name="submit">Submit</button>
+        </form>
+    </div>
+{% endblock %}
+
+<!-- {% block late_loading_js %}
+<script src="/static/js/catgifs.js"></script>
+{% endblock %} -->

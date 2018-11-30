@@ -1,0 +1,78 @@
+body {
+    max-width: 800px;
+    margin: 2rem auto;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+header {
+    background-color: #919450;
+    color: white;
+}
+
+footer {
+    background-color: #919450;
+    color: white;
+}
+
+#logo {
+    width: auto;
+    height: auto;
+    max-width: 160px;
+    max-height: 160px;
+}
+
+#chosen-cat {
+    display: block;
+}
+
+/*remove list bullets*/
+li {
+    list-style-type: none;
+}
+
+/*https://stackoverflow.com/questions/49205468/how-to-customize-list-group-item-colors-in-bootstrap*/
+.list-group-item {
+    color: #919450;
+    line-height: .01em;
+}
+
+.list-group-item-heading {
+    font-size: 25px;
+}
+
+.list-group-item-text {
+    font-size: 16px;
+}
+
+#vast-badger-name {
+    color: magenta;
+}
+
+#cloudy-penguin-name {
+    color: magenta;
+}
+
+#relieved-nightingale-name {
+    color: magenta;
+}
+
+#vast-badger-headshot {
+    width: auto;
+    height: auto;
+    max-width: 260px;
+    max-height: 260px;
+}
+
+#cloudy-penguin-headshot {
+    width: auto;
+    height: auto;
+    max-width: 260px;
+    max-height: 260px;
+}
+
+#relieved-nightingale-headshot {
+    width: auto;
+    height: auto;
+    max-width: 260px;
+    max-height: 260px;
+}
