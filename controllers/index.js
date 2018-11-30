@@ -27,16 +27,6 @@ function about(request, response) {
 
 //Create a function for the detailed page
 
-function event_details(request,response){
-    const contextData = {
-        title: 'Event\'s Details',
-        salutation: 'RSVP to this event',
-
-    };
-    response.render('event_details',contextData);
-}
-
-
 function form(request, response) {
     const contextData = {
         title: 'Create event',
@@ -96,6 +86,11 @@ function formSubmit(request, response) {
 
 
 function eventDetail(req, res) {
+    const contextData = {
+        title: 'Event\'s Details',
+        salutation: 'RSVP to this event',
+    };
+
     const eventID = parseInt(req.params.eventID);
     const theEvent = eventModels.getById(eventID);
     theEvent.salutation = 'These are the details of the event! RSVP to attend. You can also make a donation!';
