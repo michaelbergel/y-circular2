@@ -86,6 +86,7 @@ function eventDetail(req, res) {
         date: theEvent.date,
         location: theEvent.location,
         attending: theEvent.attending,
+        image: theEvent.image,
     };
     theEvent.salutation = 'These are the details of the event! RSVP to attend. You can also make a donation!';
     if (!theEvent) {
