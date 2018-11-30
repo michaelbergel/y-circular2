@@ -5,20 +5,20 @@ const eventModels = require('../models/events.js');
 // handles a request, writing the response.
 function index(request, response) {
     const contextData = {
-        title: 'Party Monsters',
-        salutation: 'Party Monsters, the Best Events in New Haven',
+        title: 'Listings',
+        salutation: "Browse all listings and see what you'd like to rent",
         events: eventModels.all,
     };
     response.render('index', contextData);
 }
 
-function about(request, response) {
+function homepage(request, response) {
     const contextData = {
-        title: 'About our Team',
-        salutation: 'Take a look at our headshots',
+        title: 'Welcome!',
+        salutation: 'Welcome to Y-Circular!',
 
     };
-    response.render('about', contextData);
+    response.render('homepage', contextData);
 }
 
 function formSubmit(request, response) {
@@ -70,7 +70,7 @@ function formSubmit(request, response) {
 }
 
 
-function eventDetail(req, res) {
+function itemDetails(req, res) {
     const eventID = parseInt(req.params.eventID, 10);
     const theList = eventModels.getById(eventID);
     const contextData = {
@@ -86,14 +86,14 @@ function eventDetail(req, res) {
     if (!theEvent) {
         res.send('could not find event! should send 404');
     } else {
-        res.render('event_details', contextData);
+        res.render('item_details', contextData);
     }
 }
 
 
 module.exports = {
     index,
-    about,
+    homepage,
     formSubmit,
-    eventDetail,
+    itemDetails,
 };

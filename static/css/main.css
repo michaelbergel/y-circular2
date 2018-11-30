@@ -5,12 +5,12 @@ body {
 }
 
 header {
-    background-color: #919450;
+    background-color: #3a95cf;
     color: white;
 }
 
 footer {
-    background-color: #919450;
+    background-color: #3a95cf;
     color: white;
 }
 
@@ -32,7 +32,7 @@ li {
 
 /*https://stackoverflow.com/questions/49205468/how-to-customize-list-group-item-colors-in-bootstrap*/
 .list-group-item {
-    color: #919450;
+    color: #3a95cf;
     line-height: .01em;
 }
 
@@ -42,14 +42,6 @@ li {
 
 .list-group-item-text {
     font-size: 16px;
-}
-
-#vast-badger-name {
-    color: magenta;
-}
-
-#cloudy-penguin-name {
-    color: magenta;
 }
 
 #relieved-nightingale-name {
@@ -63,16 +55,12 @@ li {
     max-height: 260px;
 }
 
-#cloudy-penguin-headshot {
-    width: auto;
-    height: auto;
-    max-width: 260px;
-    max-height: 260px;
+.homepage {
+    text-align: center;
 }
 
-#relieved-nightingale-headshot {
-    width: auto;
-    height: auto;
-    max-width: 260px;
-    max-height: 260px;
+.yblue {
+    color: #3a95cf;
+    line-height: .01em;
+    text-align: center;
 }

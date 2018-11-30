@@ -34,11 +34,10 @@ app.set('view engine', 'html');
 app.use('/static', express.static('static'));
 
 // Now, attach our "controllers" to our "routes".
-app.get('/', indexControllers.index);
-app.get('/about', indexControllers.about);
+app.get('/index', indexControllers.index);
+app.get('/', indexControllers.homepage);
 app.get('/listing/new', indexControllers.formSubmit);
 app.post('/listing/new', indexControllers.formSubmit);
-app.get('/about', indexControllers.about);
 
 // Controller for creating detailed pages
 app.get('/listing/:listingID', indexControllers.eventDetail);

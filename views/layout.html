@@ -17,10 +17,18 @@
 </head>
 
 <body>
-    <div>
-        <img id="logo" src="/static/img/logo.png" alt="Summer Fog Logo">
-        <h1>Y-Circular</h1>
-    </div>
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <span><img id="logo" src="/static/img/logo.png" alt="Y Circular Logo"/></span>
+            <a class="navbar-brand btn btn-info" href="/listing/new">Share an Item</a>
+            <a class="navbar-brand btn btn-info" href="/index">Rent an Item</a>
+        </div>
+    </nav>
+
+    <!--<div>-->
+    <!--    <img id="logo" src="/static/img/logo.png" alt="Summer Fog Logo">-->
+    <!--    <h1>Y-Circular</h1>-->
+    <!--</div>-->
 
     <header>{{header}}</header>
 
@@ -29,13 +37,13 @@
         {% endblock %}
     </div>
 
-    <footer>
+    <footer class="homepage">
         Site Map
         <nav class="navbar navbar-expand-md bg-light border">
             <div class="navbar-footer" id="navbar">
-                <ul class="navbar-nav ml-auto mt-2">
+                <ul class="navbar-nav homepage">
                     <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/index">All Listings</a></li>
                 </ul>
             </div>
         </nav>
