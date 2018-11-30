@@ -21,17 +21,6 @@ function about(request, response) {
     response.render('about', contextData);
 }
 
-
-// Create a function for the detailed page
-function form(request, response) {
-    const contextData = {
-        title: 'Create event',
-        salutation: 'Let\'s create a new event!',
-
-    };
-    response.render('form', contextData);
-}
-
 function formSubmit(request, response) {
     // The form data are in `request.body`. We need to get
     // these data out and use them to create a new event,
@@ -100,7 +89,6 @@ function eventDetail(req, res) {
 module.exports = {
     index,
     about,
-    form,
     formSubmit,
     eventDetail,
 };
