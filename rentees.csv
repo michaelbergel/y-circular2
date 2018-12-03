@@ -1,3 +1,4 @@
 id,name,email,phone,address,object,firstRent,endRent,delivery,id_renter
 2,Maia,maia@yale.edu,54321,66 Orange,mac,2021-08-04,2021-09-04,Pick up at Yale SOM,1
 3,j,michael.bergel@yale.edu,798798,108 dwight st,bag,2018-01-01,2019-01-01,Pick up at Yale SOM,8
+4,Bella,michael.bergel@yale.edu,798798,108 dwight st,Thairo,2018-12-01,2019-01-02,Pick up at Yale SOM,9

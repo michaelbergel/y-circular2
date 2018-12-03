@@ -295,6 +295,19 @@ function thanks(request, response) {
 }
 
 
+function downloadlistings(request, response) {
+
+    response.download('out.csv');
+
+}
+
+function downloadrentees(request, response) {
+
+    response.download('rentees.csv');
+
+}
+
+
 module.exports = {
     index,
     homepage,
@@ -302,49 +315,50 @@ module.exports = {
     rentSubmit,
     itemDetails,
     thanks,
+    downloadlistings,
+    downloadrentees,
 };
 
 // unfortunaley calling the function bellow
 // is asynchronous
-function getLastId() {
-        csv.fromPath('out.csv', {headers: true})
-          .on('data', function(data) {
-            fileRows.push(data);
+// function getLastId() {
+//         csv.fromPath('out.csv', {headers: true})
+//           .on('data', function(data) {
+//             fileRows.push(data);
 
-            // `data` is an array containing the values
-            // of the current line in the file
-            //console.log(data);
-          })
-          .on('end', function() {
-            console.log('Parsing complete!');
-            var n = Math.max(...fileRows.map(x => x.id));
-            console.log(n);
-            return n;
-          });
+//             // `data` is an array containing the values
+//             // of the current line in the file
+//             //console.log(data);
+//           })
+//           .on('end', function() {
+//             console.log('Parsing complete!');
+//             var n = Math.max(...fileRows.map(x => x.id));
+//             console.log(n);
+//             return n;
+//           });
 
-}
+// }
 
 
-function getFromId(id) {
-        csv.fromPath('out.csv', {headers: true})
-          .on('data', function(data) {
-            fileRows.push(data);
+// function getFromId(id) {
+//         csv.fromPath('out.csv', {headers: true})
+//           .on('data', function(data) {
+//             fileRows.push(data);
 
-            // `data` is an array containing the values
-            // of the current line in the file
-            //console.log(data);
-          })
-          .on('end', function() {
-            console.log('this one not ready...');
-            for (let i = 0; i < fileRows.length; i += 1) {
-                    console.log(fileRows[i].id);
-                    if (id == fileRows[i].id) {
-                        console.log(fileRows[i]);
-                        return fileRows[i];
-                    }
-                }
-                return null;
-          });
+//             // `data` is an array containing the values
+//             // of the current line in the file
+//             //console.log(data);
+//           })
+//           .on('end', function() {
+//             console.log('this one not ready...');
+//             for (let i = 0; i < fileRows.length; i += 1) {
+//                     console.log(fileRows[i].id);
+//                     if (id == fileRows[i].id) {
+//                         console.log(fileRows[i]);
+//                         return fileRows[i];
+//                     }
+//                 }
+//                 return null;
+//           });
 
-}
-
+// }

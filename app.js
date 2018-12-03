@@ -77,4 +77,8 @@ app.get('/thanks', indexControllers.thanks);
 app.get('/listing/:listingID', indexControllers.itemDetails);
 app.post('/listing/:listingID', indexControllers.itemDetails);
 
+
+app.get('/downloadlistings', indexControllers.downloadlistings);
+app.get('/downloadrentees', indexControllers.downloadrentees);
+
 module.exports = app;
