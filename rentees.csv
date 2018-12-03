@@ -1,23 +1,3 @@
 id,name,email,phone,address,object,firstRent,endRent,delivery,id_renter
-2,Maia,maia@yale.edu,54321,66 Orange,mac,2021-08-04,2021-09-04,Pick up at Yale SOM,NaN
-3,Maia3,maia@yale.edu,54321,66 Orange,,2021-08-04,2021-09-04,Pick up at Yale SOM,0
-1,Maia4,maia@yale.edu,54321,66 Orange,,2021-08-04,2021-09-04,Pick up at Yale SOM,
-4,Maia5,maia@yale.edu,54321,66 Orange,,2021-08-04,2021-09-04,Pick up at Yale SOM,
-5,Daniel1,dan@yale.edu,444,33 Lock,,2018-01-01,2018-02-01,Deliver to your home,
-6,Dea1,dea@yale.edu,900900,55 Prospect,Bible,2019-01-01,2019-02-01,Pick up at Yale SOM,
-7,Dea2,dea@yale.edu,88899998,55 Prospect,,2018-01-03,2019-01-04,Deliver to your home,
-1,Dea2,dea@yale.edu,88899998,55 Prospect,,2018-01-03,2019-01-04,Deliver to your home,
-8,Dea2,dea@yale.edu,88899998,55 Prospect,,2018-01-03,2019-01-04,Deliver to your home,
-9,Dea3,dea@yale.edu,88899998,55 Prospect,,2018-01-03,2019-01-04,Deliver to your home,
-10,Bella,michael.bergel@yale.edu,123,108 dwight st,,2018-12-31,2018-12-31,Pick up at Yale SOM,
-11,j,michael.bergel@yale.edu,798798,108 dwight st,,2018-12-31,2018-12-31,Pick up at Yale SOM,
-12,Bella,michael.bergel@yale.edu,798798,108 dwight st,,2019-01-01,2020-01-01,Pick up at Yale SOM,
-13,Bella,michael.bergel@yale.edu,798798,108 dwight st,,2018-01-01,2019-01-01,Pick up at Yale SOM,
-1,Bella,michael.bergel@yale.edu,798798,108 dwight st,,2018-01-01,2019-01-01,Pick up at Yale SOM,
-14,Bella,michael.bergel@yale.edu,798798,108 dwight st,,2018-01-01,2019-01-01,Pick up at Yale SOM,
-15,Bella,michael.bergel@yale.edu,798798,108 dwight st,,2018-01-01,2019-01-01,Pick up at Yale SOM,
-16,Bella,michael.bergel@yale.edu,798798,108 dwight st,,2018-12-31,2019-12-31,Pick up at Yale SOM,
-1,Bella,michael.bergel@yale.edu,798798,108 dwight st,,2018-12-31,2019-12-31,Pick up at Yale SOM,
-17,Bella,michael.bergel@yale.edu,798798,108 dwight st,,2018-12-31,2019-12-31,Pick up at Yale SOM,7
-18,Bella,michael.bergel@yale.edu,798798,108 dwight st,,2018-12-31,2019-12-31,Pick up at Yale SOM,
-19,Bella,michael.bergel@yale.edu,798798,108 dwight st,Bible,2018-12-05,2019-01-01,Pick up at Yale SOM,7
+2,Maia,maia@yale.edu,54321,66 Orange,mac,2021-08-04,2021-09-04,Pick up at Yale SOM,1
+3,j,michael.bergel@yale.edu,798798,108 dwight st,bag,2018-01-01,2019-01-01,Pick up at Yale SOM,8
