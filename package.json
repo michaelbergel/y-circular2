@@ -5,11 +5,25 @@
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "convert-csv-to-array": "^1.0.1",
+    "csv": "^5.0.0",
+    "csvtojson": "^2.0.8",
+    "d3": "^5.7.0",
+    "d3-request": "^1.0.6",
+    "dotenv": "^6.1.0",
     "express": "^4.15.4",
+    "fast-csv": "^2.4.1",
+    "jquery": "^3.3.1",
+    "mysql": "^2.16.0",
+    "node-fetch": "^2.3.0",
+    "node-fetch-polyfill": "^2.0.6",
     "nodemon": "^1.18.7",
-    "nunjucks": "^3.0.1"
+    "nunjucks": "^3.0.1",
+    "pg": "^7.7.1",
+    "pg-promise": "^8.5.3"
   },
   "devDependencies": {
+    "@types/d3": "^5.0.1",
     "eslint": "^5.7.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",

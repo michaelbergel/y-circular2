@@ -1,0 +1,6 @@
+id,name,email,school,class,phone,object,price,image,firstAvail,lastAvail
+2,Bella,bella.steiner@yale.edu,FES,20,798798,phone,24,oimg.jpg,2018-12-31,2019-12-30
+3,Mike,michael.bergel@yale.edu,SOM,19,123,mac,22,jkl.jpg,2019-12-24,2021-11-03
+4,Davod,david.mala@yale.edu,CS,21,123,pow,450,jpg.jpg,2018-12-31,2021-05-04
+6,Thairo,thairo.arruda@yale.edu,sei la,20,345 88 999,girlfriend,1,gfd.jpg,2018-01-01,2018-02-01
+7,Jesus Christ,jc@yale.edu,Jewish Studies,NA,000988,Bible,5000,bible.jpg,2018-02-01,2018-05-02

@@ -17,8 +17,8 @@ footer {
 #logo {
     width: auto;
     height: auto;
-    max-width: 160px;
-    max-height: 160px;
+    max-width: 120px;
+    max-height: 120px;
 }
 
 #chosen-cat {
@@ -56,11 +56,54 @@ li {
 }
 
 .homepage {
-    text-align: center;
+    text-align: left;
 }
 
 .yblue {
     color: #3a95cf;
     line-height: .01em;
     text-align: center;
+}
+
+.navbar-buttons
+{
+   margin-left: 40px;
+}
+
+.btn-info {
+    background-color: #3a95cf !important;
+}
+
+#center {
+    width: auto;
+    margin-left: 200px;
+    text-align: center;
+    min-height:76vh;
+    position:relative;
+}
+
+#footer {
+    position: absolute;
+    width: 100%;
+}
+
+#dropdown {
+    width: auto;
+
+}
+
+.nextto {
+    display: inline-block;
+}
+
+#hidden {
+    color: white;
+    font-size: 2px;
+}
+
+.list-group-item-text:before {
+    content: '$';
+}
+.list-group-item-text:after {
+    content: '.00';
 }

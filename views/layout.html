@@ -19,35 +19,31 @@
 <body>
     <nav class="navbar navbar-default">
         <div class="navbar-header">
-            <span><img id="logo" src="/static/img/logo.png" alt="Y Circular Logo"/></span>
-            <a class="navbar-brand btn btn-info" href="/listing/new">Share an Item</a>
-            <a class="navbar-brand btn btn-info" href="/index">Rent an Item</a>
+            <a href="/"><img id="logo" src="/static/img/logo.png" alt="Y Circular Logo"/></a>
+            <a class="navbar-brand btn btn-info navbar-buttons" href="/listing/new">Share an Item</a>
+            <a class="navbar-brand btn btn-info navbar-buttons" href="/index">Rent an Item</a>
         </div>
     </nav>
 
-    <!--<div>-->
-    <!--    <img id="logo" src="/static/img/logo.png" alt="Summer Fog Logo">-->
-    <!--    <h1>Y-Circular</h1>-->
-    <!--</div>-->
-
     <header>{{header}}</header>
 
-    <div>
+    <div id="center">
         {% block body %}
         {% endblock %}
     </div>
 
-    <footer class="homepage">
-        Site Map
-        <nav class="navbar navbar-expand-md bg-light border">
-            <div class="navbar-footer" id="navbar">
-                <ul class="navbar-nav homepage">
-                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/index">All Listings</a></li>
-                </ul>
-            </div>
-        </nav>
+    <footer class="homepage" id="footer">
+        Y Circular, LLC
+        <!--<nav class="navbar navbar-expand-md bg-light border">-->
+        <!--    <div class="navbar-footer" id="navbar">-->
+        <!--        <ul class="navbar-nav homepage">-->
+        <!--            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>-->
+        <!--            <li class="nav-item"><a class="nav-link" href="/index">All Listings</a></li>-->
+        <!--        </ul>-->
+        <!--    </div>-->
+        <!--</nav>-->
     </footer>
+    <br></br>
 
     {% block late_loading_js %}
     {% endblock %}

@@ -8,7 +8,7 @@
 {% if errors %}
 <ul class="form-errors">
     {% for error in errors %}
-        <li>
+        <li class="p-3 mb-2 bg-danger text-white">
             {{ error }}
         </li>
     {% endfor %}
@@ -17,87 +17,201 @@
 
 <form action="" method="post">
     <p>
-    <div>
-    <label for="name">Name</label>
-    <input name="name_listing" type="text"/>
-    </div>
+        <div>
+            <label for="name">Name</label>
+            <input name="name" type="text"/>
+        </div>
     </p>
 
 
     <p>
-    <div>
-    <label for="email">e-mail</label>
-    <input name="email" type="text"/>
-    </div>
+        <div>
+            <label for="email">E-mail</label>
+            <input name="email" type="text"/>
+        </div>
     </p>
 
 
     <p>
-    <div>
-    <label for="school">School</label>
-    <input name="school" type="text"/>
-    </div>
+        <div>
+            <label for="school">School</label>
+            <input name="school" type="text"/>
+        </div>
     </p>
 
 
     <p>
-    <div>
-    <label for="class_">Class</label>
-    <select name="class">
-        <option>19</option>
-        <option>20</option>
-        <option>21</option>
-        <option>22</option>
-        <option>23</option>
-        <option>24</option>
-        <option>25</option>
-        <option>26</option>
-        <option>NA</option>
-    </select>
-    </div>
+        <div>
+            <label for="class_">Class</label>
+            <select name="class">
+                <option>19</option>
+                <option>20</option>
+                <option>21</option>
+                <option>22</option>
+                <option>23</option>
+                <option>24</option>
+                <option>25</option>
+                <option>26</option>
+                <option>NA</option>
+            </select>
+        </div>
     </p>
 
 
     <p>
-    <div>
-    <label for="phone">Phone number</label>
-    <input name="phone" type="tel"/>
-    </div>
+        <div>
+            <label for="phone">Phone number</label>
+            <input name="phone" type="tel"/>
+        </div>
     </p>
 
 
 
     <p>
-    <div>
-    <label for="object">What object do you want to list?</label>
-    <input name="object" type="text" maxlength="50"/>
-    </div>
+        <div>
+            <label for="object">What object do you want to list?</label>
+            <input name="object" type="text" maxlength="50"/>
+        </div>
+    </p>
+
+    <p>
+        <div>
+            <label for="firstAvail">First available date</label>
+            <input name="firstAvail" type="date"/>
+        </div>
+    </p>
+
+    <p>
+        <div>
+            <label for="lastAvail">Last available date</label>
+            <input name="lastAvail" type="date"/>
+        </div>
     </p>
 
 
     <p>
-    <div>
-        <label for="price">Price per day</label>
-        <span class="input-group-addon">$</span>
-        <input type="number" name="price" />
-    </div>
+        <div>
+            <label for="price">Price per day</label>
+            <span class="input-group-addon">$</span>
+            <input type="number" name="price" />
+        </div>
     </p>
 
 
     <p>
-    <div>
-    <label for="image">Image</label>
-    <input name="pic" type="text"/>
-    </div>
+        <div>
+            <label for="image">Image</label>
+            <input name="image" type="text"/>
+        </div>
     </p>
 
     <p>
-    <div>
-    <button type="submit" name="submit" class="btn btn-info">Submit</button>
-    </div>
+        <div>
+            <button type="submit" name="submit" class="btn btn-info">Submit</button>
+        </div>
     </p>
 
 </form>
+
+<!--Me trying to make it prettier and running out of time-->
+<!--<form class = "form-inline" action="" method="post">-->
+<!--    <p>-->
+<!--        <div class="form-group mx-sm-3 mb-2">-->
+<!--            <label for="name">Name </label>-->
+<!--            <input class="form-control" name="name" type="text" placeholder="Enter full name"/>-->
+<!--        </div>-->
+<!--    </p>-->
+
+
+<!--    <p>-->
+<!--        <div class="form-group mx-sm-3 mb-2">-->
+<!--            <label for="email">E-mail </label>-->
+<!--            <input name="email" class="form-control" type="email" placeholder="Enter email"/>-->
+<!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone except those who wish to rent your item.</small>-->
+<!--        </div>-->
+<!--    </p>-->
+
+
+<!--    <p>-->
+<!--        <div class="form-group mx-sm-3 mb-2">-->
+<!--            <label for="school">School </label>-->
+<!--            <input class="form-control" name="school" type="text"/>-->
+<!--        </div>-->
+<!--    </p>-->
+
+
+<!--    <p>-->
+<!--        <div class="form-group mx-sm-3 mb-2">-->
+<!--            <label for="class_">Class of: </label>-->
+<!--            <select name="class" class="form-control">-->
+<!--                <option>19</option>-->
+<!--                <option>20</option>-->
+<!--                <option>21</option>-->
+<!--                <option>22</option>-->
+<!--                <option>23</option>-->
+<!--                <option>24</option>-->
+<!--                <option>25</option>-->
+<!--                <option>26</option>-->
+<!--                <option>NA</option>-->
+<!--            </select>-->
+<!--        </div>-->
+<!--    </p>-->
+
+
+<!--    <p>-->
+<!--        <div class="form-group mx-sm-3 mb-2">-->
+<!--            <label for="phone">Phone number</label>-->
+<!--            <input class="form-control" name="phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"/>-->
+<!--        </div>-->
+<!--    </p>-->
+
+
+
+<!--    <p>-->
+<!--        <div class="form-group mx-sm-3 mb-2">-->
+<!--            <label for="object">What object would you like to list?</label>-->
+<!--            <input class="form-control" name="object" type="text" maxlength="50"/>-->
+<!--        </div>-->
+<!--    </p>-->
+
+<!--    <p>-->
+<!--        <div class="form-group mx-sm-3 mb-2">-->
+<!--            <label for="firstAvail">First available date</label>-->
+<!--            <input  class="form-control" name="firstAvail" type="date"/>-->
+<!--        </div>-->
+<!--    </p>-->
+
+<!--    <p>-->
+<!--        <div class="form-group mx-sm-3 mb-2">-->
+<!--            <label for="lastAvail">Last available date</label>-->
+<!--            <input  class="form-control" name="lastAvail" type="date"/>-->
+<!--        </div>-->
+<!--    </p>-->
+
+
+<!--    <p>-->
+<!--        <div class="form-group mx-sm-3 mb-2">-->
+<!--            <label for="price">Price per day</label>-->
+<!--            <span class="input-group-addon">$</span>-->
+<!--            <input class="form-control" type="number" name="price" min="0.00" step="0.01"/>-->
+<!--        </div>-->
+<!--    </p>-->
+
+
+<!--    <p>-->
+<!--        <div class="form-group mx-sm-3 mb-2">-->
+<!--            <label for="image">Image</label>-->
+<!--            <input class="form-control" name="image" type="text"/>-->
+<!--        </div>-->
+<!--    </p>-->
+
+<!--    <p>-->
+<!--        <div class="form-group mx-sm-3 mb-2">-->
+<!--            <button type="submit" name="submit" class="btn btn-info">Submit</button>-->
+<!--        </div>-->
+<!--    </p>-->
+
+<!--</form>-->
 
 {% endblock %}
 

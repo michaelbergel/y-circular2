@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<p>
+    {{salutation}}
+</p>
+
+{% if errors %}
+<ul class="form-errors">
+    {% for error in errors %}
+        <li class="p-3 mb-2 bg-danger text-white">
+            {{ error }}
+        </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<form action="" method="post">
+    <p><h1 id="object">{{ object }}</h1></p>
+
+    <p>
+        <div>
+            <label for="name">Name</label>
+            <input name="name" type="text" required/>
+        </div>
+    </p>
+
+
+    <p>
+        <div>
+            <label for="email">E-mail</label>
+            <input name="email" type="text" required/>
+        </div>
+    </p>
+
+    <p>
+        <div>
+            <label for="phone">Phone number</label>
+            <input name="phone" type="tel" required/>
+        </div>
+    </p>
+
+        <p>
+        <div>
+            <label for="address">Address</label>
+            <input name="address" type="text" required/>
+        </div>
+    </p>
+
+    <p>
+        <div>
+            <label for="firstRent">Start Date</label>
+            <input class="nextto" name="firstRent" type="date" required/>
+        </div>
+    </p>
+
+
+    <p>
+        <div>
+            <label for="endRent">End Date</label>
+            <input name="endRent" type="date" required/>
+        </div>
+    </p>
+
+
+    <span>
+        <select id='dropdown' class="form-control-inline" name="delivery">
+            <option disabled selected value="selectDelivery">Pickup or Delivery?</option>
+            <option> Pick up at Yale SOM </option>
+            <option> Deliver to your home </option>
+        </select>
+    </span>
+
+    <p>
+        <div>
+            <button type="submit" name="submit" class="btn btn-info">Submit</button>
+        </div>
+    </p>
+
+</form>
+
+{% endblock %}
+
+<!-- {% block late_loading_js %}
+<script src="/static/js/catgifs.js"></script>
+{% endblock %} -->
