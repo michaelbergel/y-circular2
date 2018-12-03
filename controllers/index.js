@@ -2,8 +2,11 @@ const listingModels = require('../models/listing.js');
 const fs = require("fs");
 var csv = require('fast-csv');
 var fileRows = [];
+var renteesRows = [];
 var num = 0;
+var num2 = 0;
 var theList = [];
+var id_listing;
 
 
 
@@ -49,7 +52,7 @@ function formSubmit(request, response) {
     // DUE TO ASYNC of the lines below,
     // there was no way to keep it into a function
     // we had to implement it in every function we needed
-    // the id for the last listing
+    // the id for the last listing on the CSV
         csv.fromPath('out.csv', {headers: true})
           .on('data', function(data) {
             fileRows.push(data);
@@ -65,10 +68,6 @@ function formSubmit(request, response) {
           });
 
 
-    // The form data are in `request.body`. We need to get
-    // these data out and use them to create a new listing,
-    // or return some kind of error to the user if they
-    // submitted invalid data.
 
     // Start with an empty array of errors
     const contextData = {
@@ -154,10 +153,20 @@ function formSubmit(request, response) {
 
 
 function rentSubmit(request, response) {
-    // The form data are in `request.body`. We need to get
-    // these data out and use them to create a new listing,
-    // or return some kind of error to the user if they
-    // submitted invalid data.
+    console.log(id_listing);
+        csv.fromPath('rentees.csv', {headers: true})
+          .on('data', function(data) {
+            renteesRows.push(data);
+
+            // `data` is an array containing the values
+            // of the current line in the file
+            //console.log(data);
+          })
+          .on('end', function() {
+            console.log('Parsing rentees complete!');
+            num2 = Math.max(...renteesRows.map(x => x.id));
+            console.log(num2);
+          });
 
     // Start with an empty array of errors
     // const listingID = parseInt(request.params.listingID, 10);
@@ -177,8 +186,7 @@ function rentSubmit(request, response) {
         }
 
         if (errors.length === 0) {
-            const id = parseInt(request.params.id, 10);
-            theList = listingModels.getById(id);
+
         // Create a new listing! Find a good id (e.g. max existing id + 1)
             const renterInfo = {
                 // id: theList.id,
@@ -190,11 +198,38 @@ function rentSubmit(request, response) {
                 firstRent: request.body.firstRent,
                 endRent: request.body.endRent,
                 delivery: request.body.delivery,
+                id_renter: theList.id,
             };
-
-            // Push it on to our list of all renters
+            renterInfo.id = num2 + 1;
             console.log('The new rentee\'s info:', renterInfo);
-            listingModels.allRent.push(renterInfo);
+
+            // storing the info into CSV file
+            var csvWriter = require('csv-write-stream');
+                if (!fs.existsSync('rentees.csv')){
+                    writer = csvWriter({ headers: ["id", "name", "email", "phone", "address", "object", "firstRent", "endRent", "delivery", "id_renter"]});
+                    writer.pipe(fs.createWriteStream('rentees.csv'));
+                    writer.write([renterInfo.id, renterInfo.name, renterInfo.email, renterInfo.phone, renterInfo.address, renterInfo.object, renterInfo.firstRent, renterInfo.endRent, renterInfo.delivery, renterInfo.id_renter]);
+                }
+                else{
+                writer = csvWriter({sendHeaders: false});
+
+                writer.pipe(fs.createWriteStream('rentees.csv', {flags: 'a'}));
+                writer.write({
+                    header1:renterInfo.id,
+                    header2:renterInfo.name,
+                    header3:renterInfo.email,
+                    header4:renterInfo.phone,
+                    header5:renterInfo.address,
+                    header6:renterInfo.object,
+                    header7:renterInfo.firstRent,
+                    header8:renterInfo.endRent,
+                    header9:renterInfo.delivery,
+                    header10:renterInfo.id_renter,
+                });
+                }
+            writer.end();
+            // csv writing ends here
+
             return response.redirect('/thanks');
         }
 
@@ -223,8 +258,13 @@ function itemDetails(req, res) {
             for (let i = 0; i < fileRows.length; i += 1) {
                     if (listingID == fileRows[i].id) {
                         theList = fileRows[i];
+                         // we need to store the ID of the add to link it to
+                        // an eventual rentee's request
+                        id_listing = listingID;
                     }
                 }
+
+
             const contextData = {
                 id: listingID,
                 title: 'Listing\'s Details',

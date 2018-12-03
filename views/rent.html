@@ -16,7 +16,7 @@
 {% endif %}
 
 <form action="" method="post">
-    <p><h1 id="object">{{ object }}</h1></p>
+    <p><h1 id="object" name="{{ object }}">{{ object }}</h1></p>
 
     <p>
         <div>
@@ -71,11 +71,17 @@
         </select>
     </span>
 
+
+    <p id="renter_id">{{ id }}</p>
+
     <p>
         <div>
             <button type="submit" name="submit" class="btn btn-info">Submit</button>
         </div>
     </p>
+
+
+
 
 </form>
 
