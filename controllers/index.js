@@ -338,27 +338,3 @@ module.exports = {
 //           });
 
 // }
-
-
-// function getFromId(id) {
-//         csv.fromPath('out.csv', {headers: true})
-//           .on('data', function(data) {
-//             fileRows.push(data);
-
-//             // `data` is an array containing the values
-//             // of the current line in the file
-//             //console.log(data);
-//           })
-//           .on('end', function() {
-//             console.log('this one not ready...');
-//             for (let i = 0; i < fileRows.length; i += 1) {
-//                     console.log(fileRows[i].id);
-//                     if (id == fileRows[i].id) {
-//                         console.log(fileRows[i]);
-//                         return fileRows[i];
-//                     }
-//                 }
-//                 return null;
-//           });
-
-// }
