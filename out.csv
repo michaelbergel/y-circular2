@@ -7,3 +7,4 @@ id,name,email,school,class,phone,object,price,image,firstAvail,lastAvail
 8,David,bella.steiner@yale.edu,sa,20,798798,bag,23,hj.jpg,2018-12-01,2019-01-01
 9,Bella,michael.bergel@yale.edu,ddkl,20,798798,Thairo,12,https://static1.squarespace.com/static/580bbb643e00be602fc52f69/t/58deb732f5e23115bbce8519/1490990902052/,2018-01-01,2019-01-01
 10,Dea,dea@yale.edu,FES + SOM,19,000988,Lucas,300,https://som.yale.edu/sites/default/files/featured_profile_images/silva_lucas4_1.jpg,2018-12-01,2020-12-01
+11,Bella,bella.steiner@yale.edu,FES,19,123123,Entire apartment,1,,2019-01-01,2019-12-01

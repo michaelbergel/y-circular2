@@ -2,6 +2,7 @@ This is a minimum viable product application for a startup called Y Circular.
 The company aims to create a marketplace to connect users looking to rent stuff (literally) out
 with users offering such stuff (literally).
 
+Project by: Bella Steiner (MBA at the School of Management) and Michael Bergel (MBA at the School of Management)
 
 
 
@@ -19,11 +20,6 @@ with users offering such stuff (literally).
   Some dependencies were installed as multiple functions were being tested, but
   not all dependencies are actually needed. Later, the Heroku app will read from
   this file to install the requiired dependencies locally.
-* `node_modules/` - the folder containing all of your dependencies.
-  Usually you don't need to do anything to it, but if your app is
-  misbehaving, sometimes removing and reinstalling `node_modules/`
-  by running `rm -rf node_modules/` and `npm install`
-  will fix it. Though, you really shouldn't need to do that.
 * Several other files were used mainly by Node.js or Express. These include, but
   are not limited to: `package-lock.json`,`node_modules/`, `*.test.js`
 * `static/` is where we are keeping the CSS.
@@ -37,23 +33,9 @@ with users offering such stuff (literally).
 ## Installing dependencies
 
 To install dependencies on `package.json`, run `npm install`.
-To run the application, run npm start.
 
 
 ## Running the code
 
-To run this application in a development environment, use the command
-`npm run dev`.  That will run the "dev" script defined in `package.json`,
-which itself runs [nodemon](https://github.com/remy/nodemon). Nodemon
-will automatically restart your application when it detects changes
-to your code. Each time it restarts your application it will run
-[ESLint](https://eslint.org) on your code first to detect common
-problems and enforce the JavaScript style specified in your
-`.eslintrc.json` file.
-
-
-In production, you should start the app with `npm start` or
-`npm start`. On Heroku, this will happen by default, in the absense
-of a Procfile because Heroku will detect that you're running a
-[node](https://nodejs.org/en/) application based on the kinds
-of files in your repo.
+To check the application running from the IDE, run `npm start`.
+But to see our final product, already deployed on Heroku, just head to `https://ycircular.herokuapp.com/` (no need to run from IDE).

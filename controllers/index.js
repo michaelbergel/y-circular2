@@ -1,4 +1,8 @@
 const listingModels = require('../models/listing.js');
+// import email stuff
+var nodemailer = require('nodemailer');
+const express = require('express');
+var router = express.Router();
 const fs = require("fs");
 var csv = require('fast-csv');
 var fileRows = [];
@@ -6,8 +10,8 @@ var renteesRows = [];
 var num = 0;
 var num2 = 0;
 var theList = [];
+var renterInfo2 = [];
 var id_listing;
-
 
 
 // Create a function which is a "controller", it
@@ -135,10 +139,6 @@ function formSubmit(request, response) {
             writer.end();
             // csv writing ends here
 
-
-
-
-
             return response.redirect(`/listing/${newListing.id}`);
         }
 
@@ -202,6 +202,7 @@ function rentSubmit(request, response) {
             };
             renterInfo.id = num2 + 1;
             console.log('The new rentee\'s info:', renterInfo);
+            renterInfo2 = renterInfo;
 
             // storing the info into CSV file
             var csvWriter = require('csv-write-stream');
@@ -230,6 +231,7 @@ function rentSubmit(request, response) {
             writer.end();
             // csv writing ends here
 
+            //return response.redirect(`/thanks/${renterInfo.id}`);
             return response.redirect('/thanks');
         }
 
@@ -264,7 +266,6 @@ function itemDetails(req, res) {
                     }
                 }
 
-
             const contextData = {
                 id: listingID,
                 title: 'Listing\'s Details',
@@ -285,13 +286,44 @@ function itemDetails(req, res) {
 }
 
 
-function thanks(request, response) {
-    const contextData = {
-        title: 'Thank you!',
-        salutation: 'Welcome to Y-Circular!',
+function emailConfirm(req, res) {
+        console.log(theList.email);
+        console.log(renterInfo2.email);
+        if (!theList) {
+            res.send('could not find listing! should send error page 404');
+        }   else {
 
-    };
-    response.render('thanks', contextData);
+                var transporter = nodemailer.createTransport({
+                    service: 'Gmail',
+                    auth: {
+                        user: 'mycouchbella@gmail.com', // Your email id
+                        pass: 'ycircular' // Your password
+                    }
+                });
+
+                var text = "Object:" + theList.object + ". Renter: " + theList.email + ". Interested:" + renterInfo2.email + ". You may reach out to each other to arrange delivery details. Reach out to marina.roriz@yale.edu for further assitance, if needed.";
+
+                var mailOptions = {
+                from: 'mycouchbella@gmail.com', // sender address
+                to: theList.email + ","+ renterInfo2.email, // list of receivers
+                subject: `Thanks for using Y Circular!`, // Subject line
+                text: text //, // plaintext body
+                // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
+                };
+
+                res.render('thanks');
+
+                transporter.sendMail(mailOptions, function(error, info){
+                    if(error){
+                        console.log(error);
+                        res.json({yo: 'error'});
+                    } else{
+                        console.log('Message sent: ' + info.response);
+                        res.json({yo: info.response});
+                    }
+                });
+
+            }
 }
 
 
@@ -314,7 +346,7 @@ module.exports = {
     formSubmit,
     rentSubmit,
     itemDetails,
-    thanks,
+    emailConfirm,
     downloadlistings,
     downloadrentees,
 };
@@ -336,5 +368,3 @@ module.exports = {
 //             console.log(n);
 //             return n;
 //           });
-
-// }

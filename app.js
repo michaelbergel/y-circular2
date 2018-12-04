@@ -1,7 +1,15 @@
 'use strict';
-
 const bodyParser = require('body-parser');
 const express = require('express');
+
+// import email stuff
+// var nodemailer = require('nodemailer');
+// var router = express.Router();
+
+// var csv = require('fast-csv');
+// var renteesRows = [];
+// var theList = [];
+
 
 // Load a .env file if it exists. We store our environment
 // variables in a .env file. On heroku, you can see the env
@@ -71,7 +79,8 @@ app.get('/listing/new', indexControllers.formSubmit);
 app.post('/listing/new', indexControllers.formSubmit);
 app.get('/rentform/:id', indexControllers.rentSubmit);
 app.post('/rentform/:id', indexControllers.rentSubmit);
-app.get('/thanks', indexControllers.thanks);
+app.get('/thanks', indexControllers.emailConfirm);
+app.post('/thanks', indexControllers.emailConfirm);
 
 // Controller for creating detailed pages
 app.get('/listing/:listingID', indexControllers.itemDetails);
