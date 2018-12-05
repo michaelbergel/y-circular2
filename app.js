@@ -23,7 +23,7 @@ const app = express();
 // so that we can access it from all controllers as
 // req.app.locals
 // https://expressjs.com/en/api.html#app.locals
-app.locals.db = pgp(process.env.DATABASE_URL);
+// app.locals.db = pgp(process.env.DATABASE_URL);
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Import our controllers from their files. Notice how we're

@@ -1,13 +1,18 @@
-This is a minimum viable product application for a startup called Y Circular.
-The company aims to create a marketplace to connect users looking to rent stuff (literally) out
-with users offering such stuff (literally).
+This is a minimum viable product (MVP) application for a startup called Y Circular, based here in New Haven.
+The company aims to create a marketplace, connecting users looking to rent stuff from other users who
+are looking to offer such stuff. Thus far, Y Circular has operated exclusively on Facebook and Instagram.
+Our final product will help the company launch officially into autonomous operation. It will also help
+them test their MVP in the local market.
 
-Project by: Bella Steiner (MBA at the School of Management) and Michael Bergel (MBA at the School of Management)
+Project by:
+Bella Steiner (MBA School of Management, MPH School of Public Health)
+Michael Bergel (MBA School of Management)
 
 
+# Files
 
-* `app.js` - This file creates the [express](http://expressjs.com/)
-  application and exports it. Over here are thedefined the GET and POST requests.
+* `app.js` - This file creates and exports the express application (http://expressjs.com/).
+   It also defines all the GET and POST routes and their respective Javascript function names.
 * `server.js` - this is the server code. The server runs the
   application created in `app.js`. We seperatde the "server" from the
   "app" for testing purposes.

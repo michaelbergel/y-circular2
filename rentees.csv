@@ -1,4 +1,2 @@
 id,name,email,phone,address,object,firstRent,endRent,delivery,id_renter
-2,MaiaTESTING,maia@yale.edu,54321,66 Orange,mac,2021-08-04,2021-09-04,Pick up at Yale SOM,1
-3,Michel Bergel,michael.y.bergel@gmail.com,4752018669,"108 Dwight Street, 35",vacuum,2018-01-01,2018-01-01,Pick up at Yale SOM,2
-4,Michel Bergel,michael.y.bergel@gmail.com,4752018669,"108 Dwight Street, 35",vacuum,2018-01-01,2018-01-01,Pick up at Yale SOM,2
+5,Julie,bella.kotlar@gmail.com,2032499702,56 Main St,Sarcastic Friend,2018-12-24,2018-12-25,Pick up at Yale SOM,2

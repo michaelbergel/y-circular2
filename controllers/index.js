@@ -166,8 +166,6 @@ function rentSubmit(request, response) {
           });
 
     // Start with an empty array of errors
-    // const listingID = parseInt(request.params.listingID, 10);
-    // const theList = listingModels.getById(listingID);
     const contextData = {
         title: 'Rent this Item',
         salutation: 'Please fill out the information below to rent this item',
@@ -239,8 +237,6 @@ function rentSubmit(request, response) {
 
     return response.render('rent', contextData);
 }
-
-
 
 
 function itemDetails(req, res) {
@@ -339,8 +335,6 @@ function downloadrentees(request, response) {
 }
 
 
-
-
 module.exports = {
     index,
     homepage,
@@ -351,21 +345,3 @@ module.exports = {
     downloadlistings,
     downloadrentees,
 };
-
-// unfortunaley calling the function bellow
-// is asynchronous
-// function getLastId() {
-//         csv.fromPath('out.csv', {headers: true})
-//           .on('data', function(data) {
-//             fileRows.push(data);
-
-//             // `data` is an array containing the values
-//             // of the current line in the file
-//             //console.log(data);
-//           })
-//           .on('end', function() {
-//             console.log('Parsing complete!');
-//             var n = Math.max(...fileRows.map(x => x.id));
-//             console.log(n);
-//             return n;
-//           });
