@@ -5,6 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "chilkat_node10_linux64": "^9.50.75",
     "convert-csv-to-array": "^1.0.1",
     "csv": "^5.0.0",
     "csv-write-stream": "^2.0.0",

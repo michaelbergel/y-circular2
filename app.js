@@ -2,13 +2,6 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 
-// import email stuff
-// var nodemailer = require('nodemailer');
-// var router = express.Router();
-
-// var csv = require('fast-csv');
-// var renteesRows = [];
-// var theList = [];
 
 
 // Load a .env file if it exists. We store our environment
@@ -56,22 +49,6 @@ app.set('view engine', 'html');
 app.use('/static', express.static('static'));
 
 
-function loadBeers ( req, res, next ){
-    const db = req.app.locals.db;
-    db.many ( "SELECT * FROM beers" )
-    .then(  ( data ) => {
-      res.beers = data;
-      next();
-    })
-    .catch( ( error ) => {
-      console.log ( error );
-    });
-}
-
-app.get('/beers', loadBeers, (req, res) => {
-   res.send(res.beers);
-});
-
 // Now, attach our "controllers" to our "routes".
 app.get('/index', indexControllers.index);
 app.get('/', indexControllers.homepage);
@@ -89,5 +66,6 @@ app.post('/listing/:listingID', indexControllers.itemDetails);
 
 app.get('/downloadlistings', indexControllers.downloadlistings);
 app.get('/downloadrentees', indexControllers.downloadrentees);
+
 
 module.exports = app;

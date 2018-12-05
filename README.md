@@ -7,7 +7,7 @@ Project by: Bella Steiner (MBA at the School of Management) and Michael Bergel (
 
 
 * `app.js` - This file creates the [express](http://expressjs.com/)
-  application and exports it.
+  application and exports it. Over here are thedefined the GET and POST requests.
 * `server.js` - this is the server code. The server runs the
   application created in `app.js`. We seperatde the "server" from the
   "app" for testing purposes.
@@ -38,4 +38,19 @@ To install dependencies on `package.json`, run `npm install`.
 ## Running the code
 
 To check the application running from the IDE, run `npm start`.
-But to see our final product, already deployed on Heroku, just head to `https://ycircular.herokuapp.com/` (no need to run from IDE).
+But to see our final product, already deployed on Heroku, just head to `http://www.ycircular.co/` (no need to run from IDE).
+
+From index.html, the user will be introduced to the overall idea of this website/MVP. Every user can perform one of two actions:
+he/she can either add a listing of an object they desire to rent out and/or they may browse through the listings and request to rent an item.
+
+As the user clicks on "share an item", the GET request will render the form.html and the POST request will invoke the function formSubmit once the user fills out the form
+and submits the information. This function updates a csv file with the listing's information.
+This function also renders a GET request to item_details.htm and invokes the function itemDetails. This function is invoked everytime a listing
+is clicked on, so it can iterate thorugh the csv file and take all the information based on the ID of the item. This information is displayed on
+item_details.html.
+
+If the user wants to browse through the listings, they would click on "rent an item", whose GET request would invoke the index function and render index.html.
+This function iterates through each listing on the csv to populate index.html. As the user clicks on any listing the procedure follows as detailed above.
+Finally, if the user decides to rent the item, they will click on "rent this item", which would reder the rent.htm and invoke the function rentSubmit when submited.
+This function gathers the information from the form and updates another csv that contains the infomration from all users who have rented stuff.
+

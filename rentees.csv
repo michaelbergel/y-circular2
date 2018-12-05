@@ -1,44 +1,4 @@
 id,name,email,phone,address,object,firstRent,endRent,delivery,id_renter
-2,Maia,maia@yale.edu,54321,66 Orange,mac,2021-08-04,2021-09-04,Pick up at Yale SOM,1
-3,j,michael.bergel@yale.edu,798798,108 dwight st,bag,2018-01-01,2019-01-01,Pick up at Yale SOM,8
-4,Bella,michael.bergel@yale.edu,798798,108 dwight st,Thairo,2018-12-01,2019-01-02,Pick up at Yale SOM,9
-5,Dave,dave@yale.edu,000988,66 Orange,Lucas,2018-01-01,2019-01-01,Deliver to your home,10
-6,Bella,poop@yale.edu,poop,poop address,mac,2018-03-01,2018-04-01,Deliver to your home,3
-7,Bella,poop@yale.edu,poop,poop address,,2018-03-01,2018-04-01,Deliver to your home,
-8,Bellas,bellas@gmail.com,2042499702,somewhere,mac,2018-02-01,2018-02-03,Pick up at Yale SOM,3
-9,heehee,heehee@gmail.com,2032499702,somethign,pow,2018-01-01,2018-01-02,Deliver to your home,4
-10,Peep,Littlebo@gmail.com,2032499702,something,phone,2018-01-01,2018-01-02,Pick up at Yale SOM,2
-11,beep,beep@gmail.com,2222222222,some,Bible,2018-01-02,2018-01-03,Deliver to your home,7
-12,boop,boop@gmail.com,2222222222,something,pow,2018-01-01,2018-01-02,Deliver to your home,4
-13,boo,boo@gmail.com,2032045963,something,phone,2018-01-01,2018-01-04,Pick up at Yale SOM,2
-14,Heather,heather@gmail.com,2222222222,somewhere,,2018-01-01,2018-01-02,Pick up at Yale SOM,
-15,Poop,poop@gmail.com,2222222222,somewhere,girlfriend,2018-01-02,2019-01-01,Deliver to your home,6
-16,Poopies,poopies@gmail.com,2222222222,poopsville,bag,2019-01-01,2020-01-03,Pick up at Yale SOM,8
-17,Fishes,fishes@gmail.com,2032499702,fisheland,mac,2020-01-03,2021-01-05,Pick up at Yale SOM,3
-18,Saybrook,saybrook@gmail.com,2032224568,some place,Lucas,2018-01-01,2018-01-03,Deliver to your home,10
-19,Sumo,sumo@gmail.com,2034567894,address,phone,2018-01-02,2020-01-01,Pick up at Yale SOM,2
-20,Monster,monster@gmail.com,2035678495,Monster House,pow,2018-12-01,2019-01-01,Deliver to your home,4
-21,Poop Monster,monster@gmail.com,2943958455,somewhere,bag,2019-01-01,2020-01-01,Deliver to your home,8
-22,Hella Monster,monster@gmail.com,2034568695,somewhere,Bible,2018-01-01,2018-01-02,Pick up at Yale SOM,7
-23,Balet,balte@gmail.com,2043569586,somehwere,Thairo,2018-01-01,2018-01-02,Pick up at Yale SOM,9
-24,Balet,balte@gmail.com,2043569586,somehwere,,2018-01-01,2018-01-02,Pick up at Yale SOM,
-1,Betty Boop,betty@gmail.com,2034569586,betty's house,,2018-01-01,2019-01-02,Pick up at Yale SOM,
-25,worldly,whoa@gmail.com,2043569586,world,phone,2018-01-01,2018-01-02,Pick up at Yale SOM,2
-26,Ponies,ponies@gmail.com,3456464657,ponies land,pow,2018-01-01,2018-01-02,Deliver to your home,4
-27,Ponies,ponies@gmail.com,3456464657,ponies land,pow,2018-01-01,2018-01-02,Deliver to your home,4
-28,Ponies,ponies@gmail.com,3456464657,ponies land,,2018-01-01,2018-01-02,Deliver to your home,
-29,Bella,bella.kotlar@gmail.com,2034568495,some land here,bag,2018-01-01,2018-01-02,Pick up at Yale SOM,8
-30,Julie,julie@yale.edu,2034568697,Julie's House,pow,2018-01-01,2018-01-02,Pick up at Yale SOM,4
-31,Peter,bella.k.steiner@gmail.com,2033457654,boston,girlfriend,2018-12-31,2019-12-02,Deliver to your home,6
-32,Spoofy,bella.steiner@yale.edu,2034556787,Spoofy's House,Bible,2018-01-01,2018-01-02,Pick up at Yale SOM,7
-33,Peter,bella.k.steiner@gmail.com,2034564566,somewhere,Lucas,2018-01-01,2018-01-02,Deliver to your home,10
-34,Michel,michael.bergel@yale.edu,2032499702,New Haven,Lucas,2019-01-01,2020-01-01,Pick up at Yale SOM,10
-35,Michel Bergel,michael.bergel@yale.edu,4752018669,"108 Dwight Street, 35",Lucas,2018-01-01,2019-01-01,Pick up at Yale SOM,10
-1,Michel Bergel,michael.bergel@yale.edu,4752018669,"108 Dwight Street, 35",,2018-01-01,2019-01-01,Pick up at Yale SOM,
-1,Michel Bergel,michael.bergel@yale.edu,4752018669,"108 Dwight Street, 35",,2018-01-01,2019-01-01,Pick up at Yale SOM,
-36,Michel Bergel,michael.bergel@yale.edu,4752018669,"108 Dwight Street, 35",,2018-01-01,2019-01-01,Pick up at Yale SOM,
-37,Michel Bergel,michael.bergel@yale.edu,4752018669,"108 Dwight Street, 35",Lucas,2018-01-01,2018-01-01,Pick up at Yale SOM,10
-38,Michel Bergel,michael.bergel@yale.edu,4752018669,"108 Dwight Street, 35",Lucas,2018-01-01,2018-01-01,Pick up at Yale SOM,10
-39,Michel Bergel,michael.bergel@yale.edu,4752018669,"108 Dwight Street, 35",Lucas,2018-01-01,2018-01-01,Pick up at Yale SOM,10
-40,Michel Bergel,michael.bergel@yale.edu,4752018669,"108 Dwight Street, 35",Lucas,2018-01-01,2018-01-01,Pick up at Yale SOM,10
-41,Mike,michael.bergel@yale.edu,4752018669,"108 Dwight Street, 35",Entire apartment,2019-01-01,2019-12-01,Deliver to your home,11
+2,MaiaTESTING,maia@yale.edu,54321,66 Orange,mac,2021-08-04,2021-09-04,Pick up at Yale SOM,1
+3,Michel Bergel,michael.y.bergel@gmail.com,4752018669,"108 Dwight Street, 35",vacuum,2018-01-01,2018-01-01,Pick up at Yale SOM,2
+4,Michel Bergel,michael.y.bergel@gmail.com,4752018669,"108 Dwight Street, 35",vacuum,2018-01-01,2018-01-01,Pick up at Yale SOM,2

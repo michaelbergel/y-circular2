@@ -1,8 +1,7 @@
-const listingModels = require('../models/listing.js');
-// import email stuff
 var nodemailer = require('nodemailer');
 const express = require('express');
 var router = express.Router();
+var csvWriter = require('csv-write-stream');
 const fs = require("fs");
 var csv = require('fast-csv');
 var fileRows = [];
@@ -12,7 +11,6 @@ var num2 = 0;
 var theList = [];
 var renterInfo2 = [];
 var id_listing;
-
 
 // Create a function which is a "controller", it
 // handles a request, writing the response.
@@ -112,7 +110,6 @@ function formSubmit(request, response) {
             // trying method 2
             // take the "//" from below if not working
             // var fs = require("fs");
-            var csvWriter = require('csv-write-stream');
             if (!fs.existsSync('out.csv')){
                 writer = csvWriter({ headers: ["id", "name", "email", "school", "class", "phone", "object", "price", "image", "firstAvail", "lastAvail"]});
                 writer.pipe(fs.createWriteStream('out.csv'));
@@ -205,7 +202,6 @@ function rentSubmit(request, response) {
             renterInfo2 = renterInfo;
 
             // storing the info into CSV file
-            var csvWriter = require('csv-write-stream');
                 if (!fs.existsSync('rentees.csv')){
                     writer = csvWriter({ headers: ["id", "name", "email", "phone", "address", "object", "firstRent", "endRent", "delivery", "id_renter"]});
                     writer.pipe(fs.createWriteStream('rentees.csv'));
@@ -245,6 +241,8 @@ function rentSubmit(request, response) {
 }
 
 
+
+
 function itemDetails(req, res) {
     const listingID = parseInt(req.params.listingID, 10);
         csv.fromPath('out.csv', {headers: true})
@@ -256,9 +254,10 @@ function itemDetails(req, res) {
             //console.log(data);
           })
           .on('end', function() {
-            console.log('Gettig ready...');
+            console.log('Getting ready...');
             for (let i = 0; i < fileRows.length; i += 1) {
                     if (listingID == fileRows[i].id) {
+                        console.log(fileRows[i].id);
                         theList = fileRows[i];
                          // we need to store the ID of the add to link it to
                         // an eventual rentee's request
@@ -296,17 +295,17 @@ function emailConfirm(req, res) {
                 var transporter = nodemailer.createTransport({
                     service: 'Gmail',
                     auth: {
-                        user: 'mycouchbella@gmail.com', // Your email id
-                        pass: 'ycircular' // Your password
+                        user: 'ycircularllc@gmail.com', // Your email id
+                        pass: 'marinaroriz' // Your password
                     }
                 });
 
-                var text = "Object:" + theList.object + ". Renter: " + theList.email + ". Interested:" + renterInfo2.email + ". You may reach out to each other to arrange delivery details. Reach out to marina.roriz@yale.edu for further assitance, if needed.";
+                var text = "Object:" + theList.object + ". Renter: " + theList.email + ". Interested: " + renterInfo2.email + ". You may reach out to each other to arrange delivery details. Reach out to marina.roriz@yale.edu for further assitance, if needed.";
 
                 var mailOptions = {
-                from: 'mycouchbella@gmail.com', // sender address
+                from: 'ycircularllc@gmail.com', // sender address
                 to: theList.email + ","+ renterInfo2.email, // list of receivers
-                subject: `Thanks for using Y Circular!`, // Subject line
+                subject: `Thanks for using Y Circular! Item: ${theList.object}, ID:${theList.id}`, // Subject line
                 text: text //, // plaintext body
                 // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
                 };
@@ -338,6 +337,8 @@ function downloadrentees(request, response) {
     response.download('rentees.csv');
 
 }
+
+
 
 
 module.exports = {
