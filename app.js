@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const express = require('express');
 
 
-
 // Load a .env file if it exists. We store our environment
 // variables in a .env file. On heroku, you can see the env
 // variables with `heroku config`.
@@ -14,7 +13,7 @@ require('dotenv').config();
 const nunjucks = require('nunjucks');
 
 // Require the database library that helps us talk to postgres
-var pgp = require('pg-promise')(/*options*/);
+// var pgp = require('pg-promise')(/*options*/);
 
 const app = express();
 
@@ -58,7 +57,6 @@ app.get('/rentform/:id', indexControllers.rentSubmit);
 app.post('/rentform/:id', indexControllers.rentSubmit);
 app.get('/thanks', indexControllers.emailConfirm);
 app.post('/thanks', indexControllers.emailConfirm);
-
 // Controller for creating detailed pages
 app.get('/listing/:listingID', indexControllers.itemDetails);
 app.post('/listing/:listingID', indexControllers.itemDetails);

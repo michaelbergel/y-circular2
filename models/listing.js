@@ -1,109 +1,141 @@
-// Please disregard this file. It contains our old data structure,
-// which we just stored in arrays. We have since moved data storage
-// into csv files housed in the main y-circular2 folder.
-// technically they belong in here (the /models folder), but we did
-// not want to move them last minute to preserve all the file paths
-// in our code. We plan to start builing out a Heroku database during
-// the week of Dec 17, as we were not successfully able to pull the db
-// together before the CS50 final project submission deadline. Thus,
-// we're holding off, but not putting extraneous work into the csv
-// data structure.
+'use strict';
 
+// SQL
+const { Client } = require('pg');
 
+const client = new Client({
+    connectionString: 'postgres://noienswmyhkwiz:a75a21b145dffc1a7b88967912a9f965f37040eba69eab219c24822abe0fb88e@ec2-54-243-150-10.compute-1.amazonaws.com:5432/da95k05j4qmcl',
+    ssl: true,
+});
 
-// 'use strict';
+// Add listing to listing SQL table
+function addListingSQL(name, email, school, gradyear, phone, object, price, image, firstavail, lastavail) {
+    client.connect();
+    client.query('INSERT INTO listings (name, email, school, gradyear, phone, object, price, image, firstavail, lastavail) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id;', [name, email, school, gradyear, phone, object, price, image, firstavail, lastavail], (err, res) => {
+        if (err) throw err;
+        // var listingID = [];
+        // listingID.push(res.rows[0].id);
+        // console.log(listingID);
+        // listingID.send(listingID);
+        // console.log(res.rows);
+    client.end();
+    });
+}
+
+// Add rentee info to rentee SQL table
+function addRenteeSQL(name, email, phone, address, object, firstrent, endrent, delivery, id_listing) {
+    client.connect();
+    client.query('INSERT INTO rentees (name, email, phone, address, object, firstrent, endrent, delivery, id_listing) values ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id;', [name, email, phone, address, object, firstrent, endrent, delivery, id_listing], (err) => {
+        if (err) throw err;
+        // console.log(res.rows);
+        // client.end();
+    });
+}
+
+// An Array of all the events
+const allListings = [
+    {
+        id: 0,
+        name: 'Bella',
+        // Note that JavaScript months are zero-indexed,
+        // so, month zero is January. This is Jan 17th
+        // 2018 at 4:30pm local time.
+        email: ['kyle.jensen@yale.edu'],
+        school: 'SOM',
+        gradyear: '19',
+        phone: '475 201 8669',
+        object: 'Vacuum',
+        price: '50',
+        image: 'http://i.imgur.com/pXjrQ.gif',
+        firstavail: new Date(2018, 0, 17, 16, 30, 0),
+        lastavail: new Date(2018, 0, 17, 16, 30, 0),
+    },
+    {
+        id: 1,
+        name: 'Mike',
+        // Note that JavaScript months are zero-indexed,
+        // so, month zero is January. This is Jan 17th
+        // 2018 at 4:30pm local time.
+        email: ['mike.jensen@yale.edu'],
+        school: 'FES',
+        gradyear: '22',
+        phone: '475 201 8669',
+        object: 'Cell Phone',
+        price: '150',
+        image: 'http://i.imgur.com/pXjrQ.gif',
+        firstavail: new Date(2018, 0, 17, 16, 30, 0),
+        lastavail: new Date(2018, 0, 17, 16, 30, 0),
+    },
+];
+
+const allRentees = [
+    {
+        id: 0,
+        name: 'David',
+        // Note that JavaScript months are zero-indexed,
+        // so, month zero is January. This is Jan 17th
+        // 2018 at 4:30pm local time.
+        email: ['david.malan@harvard.edu'],
+        phone: '475 201 8669',
+        address: '45 Whitney Ave, Apt 3, New Haven, CT, 06511',
+        object: 'Vacuum',
+        price: '$50.00',
+        firstavail: new Date(2018, 0, 17, 16, 30, 0),
+        lastavail: new Date(2018, 0, 17, 16, 30, 0),
+        receiveVia: 'delivery',
+    },
+    {
+        id: 1,
+        name: 'Mike',
+        // Note that JavaScript months are zero-indexed,
+        // so, month zero is January. This is Jan 17th
+        // 2018 at 4:30pm local time.
+        email: ['mike.jensen@yale.edu'],
+        phone: '475 201 8669',
+        address: '70 Whalley Ave, Apt 430, New Haven, CT, 06511',
+        object: 'Cell Phone',
+        price: '$150.00',
+        firstavail: new Date(2018, 0, 17, 16, 30, 0),
+        lastavail: new Date(2018, 0, 17, 16, 30, 0),
+        receiveVia: 'som',
+    },
+];
+
+// Add listing to allListings
+function addListing(listing) {
+    allListings.push(listing);
+}
+
+// Add listing to allListings
+function addRentee(rentee) {
+    allRentees.push(rentee);
+}
 
 /**
- * An Array of all the events
+ * Returns the first event that has a particular id.
  */
-// const allListings = [
-//     {
-//         id: 0,
-//         name: 'Bella',
-//         // Note that JavaScript months are zero-indexed,
-//         // so, month zero is January. This is Jan 17th
-//         // 2018 at 4:30pm local time.
-//         email: ['kyle.jensen@yale.edu'],
-//         school: 'SOM',
-//         class_: '19',
-//         phone: '475 201 8669',
-//         object: 'Vacuum',
-//         price: '50',
-//         image: 'http://i.imgur.com/pXjrQ.gif',
-//         firstAvail: new Date(2018, 0, 17, 16, 30, 0),
-//         lastAvail: new Date(2018, 0, 17, 16, 30, 0),
-//     },
-//     {
-//         id: 1,
-//         name: 'Mike',
-//         // Note that JavaScript months are zero-indexed,
-//         // so, month zero is January. This is Jan 17th
-//         // 2018 at 4:30pm local time.
-//         email: ['mike.jensen@yale.edu'],
-//         school: 'FES',
-//         class_: '22',
-//         phone: '475 201 8669',
-//         object: 'Cell Phone',
-//         price: '150',
-//         image: 'http://i.imgur.com/pXjrQ.gif',
-//         firstAvail: new Date(2018, 0, 17, 16, 30, 0),
-//         lastAvail: new Date(2018, 0, 17, 16, 30, 0),
-//     },
-// ];
-
-// const allRenters = [
-//     {
-//         id: 0,
-//         name: 'David',
-//         // Note that JavaScript months are zero-indexed,
-//         // so, month zero is January. This is Jan 17th
-//         // 2018 at 4:30pm local time.
-//         email: ['david.malan@harvard.edu'],
-//         phone: '475 201 8669',
-//         address: '45 Whitney Ave, Apt 3, New Haven, CT, 06511',
-//         object: 'Vacuum',
-//         price: '$50.00',
-//         firstAvail: new Date(2018, 0, 17, 16, 30, 0),
-//         lastAvail: new Date(2018, 0, 17, 16, 30, 0),
-//         receiveVia: 'delivery',
-//     },
-//     {
-//         id: 1,
-//         name: 'Mike',
-//         // Note that JavaScript months are zero-indexed,
-//         // so, month zero is January. This is Jan 17th
-//         // 2018 at 4:30pm local time.
-//         email: ['mike.jensen@yale.edu'],
-//         phone: '475 201 8669',
-//         address: '70 Whalley Ave, Apt 430, New Haven, CT, 06511',
-//         object: 'Cell Phone',
-//         price: '$150.00',
-//         firstAvail: new Date(2018, 0, 17, 16, 30, 0),
-//         lastAvail: new Date(2018, 0, 17, 16, 30, 0),
-//         receiveVia: 'som',
-//     },
-// ];
-
-// /**
-//  * Returns the first event that has a particular id.
-//  */
-// function getById(id) {
-//     for (let i = 0; i < allListings.length; i += 1) {
-//         if (id === allListings[i].id) {
-//             return allListings[i];
-//         }
-//     }
-//     return null;
-// }
+function getById(id) {
+    for (let i = 0; i < allListings.length; i += 1) {
+        if (id === allListings[i].id) {
+            return allListings[i];
+        }
+    }
+    return null;
+}
 
 
-// function getMaxId() {
-//     return Math.max(...allListings.map(x => x.id));
-// }
+function getMaxId() {
+    return Math.max(...allListings.map(x => x.id));
+}
 
-// module.exports = {
-//     all: allListings,
-//     allRent: allRenters,
-//     getById,
-//     getMaxId,
-// };
+module.exports = {
+    allList: allListings,
+    allRent: allRentees,
+    // listingID,
+    getById,
+    getMaxId,
+    addListing,
+    addListingSQL,
+    addRentee,
+    addRenteeSQL,
+};

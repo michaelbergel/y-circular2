@@ -1,0 +1,16 @@
+{
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "globals": {
+        "$": true,
+        "jQuery": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2017
+    },
+    "env": {
+        "es6": true
+    },
+}

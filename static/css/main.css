@@ -21,6 +21,13 @@ footer {
     max-height: 120px;
 }
 
+#image {
+    width: auto;
+    height: auto;
+    max-width: 400px;
+    max-height: 400px;
+}
+
 #chosen-cat {
     display: block;
 }

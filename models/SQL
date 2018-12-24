@@ -1,0 +1,31 @@
+create table listings (
+    id          serial primary key,
+    name        varchar,
+    email       varchar,
+    school      varchar,
+    gradyear    int,
+    phone       varchar,
+    object      varchar,
+    price       int,
+    image       varchar,
+    firstavail  varchar,
+    lastavail   varchar
+);
+
+create table rentees (
+    id          serial primary key,
+    name        varchar,
+    email       varchar,
+    phone       varchar,
+    address     varchar,
+    object      varchar,
+    firstRent   varchar,
+    endRent     varchar,
+    delivery    varchar,
+    id_listing   int
+);
+
+heroku pg:psql --> connect to db via CLI and manage db
+    \dt --> view all tables
+    \q option --> list of psql command options
+

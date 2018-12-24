@@ -1,3 +1,10 @@
 id,name,email,school,class,phone,object,price,image,firstAvail,lastAvail
 1,Michel,michael.y.bergel@gmail.com,SOM,19,4752018669,Vacuum,85,https://pixel.nymag.com/imgs/daily/strategist/2018/03/22/irobot-LEDE.w700.h700.jpg,2018-01-01,2019-01-01
 2,Bella,bella.k.steiner@gmail.com,YSPH,22,2032499702,Sarcastic Friend,545,https://i.imgur.com/dOtPx2R.gif,2018-12-21,2018-12-26
+2,Bella,bella.steiner@yale.edu,SOM,19,5555555555,Bottle,2,https://images-na.ssl-images-amazon.com/images/I/219HahjWRDL._SL500_AC_SS350_.jpg,2019-01-01,2019-02-01
+2,Bella,bella.steiner@yale.edu,SOM,19,5555555555,Bottle,2,https://images-na.ssl-images-amazon.com/images/I/219HahjWRDL._SL500_AC_SS350_.jpg,2019-01-01,2019-02-01
+2,Bella,bella.steiner@yale.edu,SOM,19,5555555555,Step,4,https://cdn.shopify.com/s/files/1/1734/8163/products/large_22534ce7-0357-4ede-8dc2-cf25eab71727.jpg?v=1507660643,2019-01-02,2020-04-04
+2,Bella Steiner,bella.steiner@yale.edu,YSPH,19,5555555555,Another Step,3,https://cdn.shopify.com/s/files/1/1734/8163/products/large_22534ce7-0357-4ede-8dc2-cf25eab71727.jpg?v=1507660643,2019-01-01,2019-01-02
+2,Bella Steiner,bella.steiner@yale.edu,YSPH,19,2032499702,Scooter,7,https://vesper.world/wp-content/uploads/2016/01/step-black-5-1024x576.jpg,2019-01-01,2019-03-01
+2,Bella Steiner,bella.steiner@yale.edu,YSPH,19,2032499702,Bike,5,https://cdn.shopify.com/s/files/1/2426/4557/products/Tracer-FTY-Red-45_620x.png,2019-01-01,2020-01-02
+2,Bella Steiner,bella.steiner@yale.edu,SOM,19,2032499702,Blender,8,https://static1.squarespace.com/static/59c27d3051a5847be819a6db/59c2a4f5a8b2b0cf84479ce1/59cbb5562278e797b61b79b8/1507138994622/DPB500AQ_Blender_Hero_Empty.jpg,2019-01-02,2022-02-04

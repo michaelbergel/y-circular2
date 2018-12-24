@@ -4,10 +4,10 @@
 
 <div class="container">
     <p><h1 id="object">{{ object }}</h1></p>
-    <p><div>Price/day: <span class="list-group-item-text" id="price">{{ price }}</span></div></p>
-    <p><div>First available on: <span id="firstAvail">{{ firstAvail }}</span></div></p>
-    <p><div>Available until: <span id="lastAvail">{{ lastAvail }}</span></div></p>
-    <p><div><img src="{{ image }}" alt="no image available" id="image" /></div></p>
+    <p><div>Price per Day: <span class="list-group-item-text" id="price">{{ price }}</span></div></p>
+    <p><div>First available on: <span id="firstAvail">{{ firstavail }}</span></div></p>
+    <p><div>Available until: <span id="lastAvail">{{ lastavail }}</span></div></p>
+    <p><div><img src="{{ image }}" alt="Image of {{ object }}" id="image" /></div></p>
     <p><div>
         <form action="/listing/{{id}}" method="post">
             <a class="navbar-link btn btn-info navbar-buttons" href="/rentform/{{ id }}">Rent this Item</a>
