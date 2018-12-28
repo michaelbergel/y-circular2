@@ -7,7 +7,7 @@
     <p><div>Price per Day: <span class="list-group-item-text" id="price">{{ price }}</span></div></p>
     <p><div>First available on: <span id="firstAvail">{{ firstavail }}</span></div></p>
     <p><div>Available until: <span id="lastAvail">{{ lastavail }}</span></div></p>
-    <p><div><img src="{{ image }}" alt="Image of {{ object }}" id="image" /></div></p>
+    <p><div><img src="{{ im }}" alt="Image of {{ object }}" id="image" /></div></p>
     <p><div>
         <form action="/listing/{{id}}" method="post">
             <a class="navbar-link btn btn-info navbar-buttons" href="/rentform/{{ id }}">Rent this Item</a>

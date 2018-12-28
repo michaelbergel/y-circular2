@@ -2,24 +2,30 @@ const store = require('../models/listing.js');
 var nodemailer = require('nodemailer');
 const express = require('express');
 var router = express.Router();
-var csvWriter = require('csv-write-stream');
-const fs = require("fs");
-var csv = require('fast-csv');
-var fileRows = [];
-var renteesRows = [];
-var num = 0;
 var num2 = 0;
 var theList = [];
 var renterInfo2 = [];
 var id_listing;
+var async = require('async');
+
+
 
 // Establish SQL database connection
 const { Client } = require('pg');
+const { Pool } = require('pg');
 
 const client = new Client({
-    connectionString: 'postgres://noienswmyhkwiz:a75a21b145dffc1a7b88967912a9f965f37040eba69eab219c24822abe0fb88e@ec2-54-243-150-10.compute-1.amazonaws.com:5432/da95k05j4qmcl',
+    connectionString: 'postgres://srtkdectxghkmw:8c7ca2be49603ed01ded285a6250e2d1ba5d16329d7ed22e796edbb78a3758a6@ec2-54-243-212-227.compute-1.amazonaws.com:5432/d2lk88cg6v0e33',
     ssl: true,
 });
+
+
+const pool = new Pool({
+    connectionString: 'postgres://srtkdectxghkmw:8c7ca2be49603ed01ded285a6250e2d1ba5d16329d7ed22e796edbb78a3758a6@ec2-54-243-212-227.compute-1.amazonaws.com:5432/d2lk88cg6v0e33',
+    ssl: true,
+});
+
+
 
 // Create a function which is a "controller", it
 // handles a request, writing the response.
@@ -39,30 +45,6 @@ function index(request, response) {
         }
     });
 
-    // CSV Method
-    // the code below parses data from out.csv
-    // and stores into an array called data
-
-    // csv.fromPath('out.csv', {headers: true})
-    //       .on('data', function(data) {
-    //         fileRows.push(data);
-
-    //         // `data` is an array containing the values
-    //         // of the current line in the file
-    //       })
-    //       .on('end', function() {
-    //         console.log('Parsing awesome!');
-    //         const contextData = {
-    //             title: 'Listings',
-    //             salutation: "Browse all listings and see what you'd like to rent",
-    //             listings: fileRows,
-    //         };
-    //         response.render('index', contextData);
-    //       });
-    // // csv reading code up goes up to here
-
-    // // we need to reset the array or it will keep on increasing forever
-    // fileRows = [];
 }
 
 function homepage(request, response) {
@@ -73,24 +55,7 @@ function homepage(request, response) {
     response.render('homepage', contextData);
 }
 
-function formSubmit(request, response) {
-
-    // CSV Method
-    // DUE TO ASYNC of the lines below, there was no way to keep it into a function
-    // we had to implement it in every function we needed the id for the last listing on the CSV
-        // csv.fromPath('out.csv', {headers: true})
-        //   .on('data', function(data) {
-        //     fileRows.push(data);
-
-        //     // `data` is an array containing the values
-        //     // of the current line in the file
-        //     //console.log(data);
-        //   })
-        //   .on('end', function() {
-        //     console.log('Parsing complete!');
-        //     num = Math.max(...fileRows.map(x => x.id));
-        //     console.log(num);
-        //   });
+async function formSubmit(request, response) {
 
     // Start with an empty array of errors
     const contextData = {
@@ -108,8 +73,7 @@ function formSubmit(request, response) {
         }
 
         if (errors.length === 0) {
-
-        // Create a new listing! Find a good id (e.g. max existing id + 1)
+        // note to myself: create validations for the fields below
             const newListing = {
                 id: store.allList[store.allList.length - 1].id + 1,
                 name: request.body.name,
@@ -125,61 +89,21 @@ function formSubmit(request, response) {
             };
             // newListing.id = num + 1;
 
+            console.log(newListing);
             // JS Method
             store.addListing(newListing);
             // Push it on to our list of all listings
-
-            // Add listing to listing SQL table (bandaid - use below method eventually)
-                var listingID;
-                client.connect();
-                client.query('INSERT INTO listings (name, email, school, gradyear, phone, object, price, image, firstavail, lastavail) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id;', [request.body.name, request.body.email, request.body.school, request.body.gradyear, request.body.phone, request.body.object, request.body.price, request.body.image, request.body.firstavail, request.body.lastavail], (err, res) => {
-                    if (err) throw err;
-                    var listingID = res.rows[0].id;
-                    client.end();
-                    console.log('some listing id: ',listingID);
-                    cb(listingID);
-                    // console.log(res.rows);
-                });
-                response.redirect(`/listing/${listingID}`);
-                // var q = client.query('INSERT INTO listings (name, email, school, gradyear, phone, object, price, image, firstavail, lastavail) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id;', [request.body.name, request.body.email, request.body.school, request.body.gradyear, request.body.phone, request.body.object, request.body.price, request.body.image, request.body.firstavail, request.body.lastavail]);
-                // console.log(q.id);
+            let success = await storage(newListing.name, newListing.email,
+            newListing.school, newListing.gradyear, newListing.phone,
+            newListing.object, newListing.price, newListing.image,
+            newListing.firstavail, newListing.lastavail);
 
 
-            // Use this PostgreSQL Method when figure out how to pass vars from on js file to another
-            // store.addListingSQL(request.body.name, request.body.email,
-            //     request.body.school, request.body.gradyear, request.body.phone,
-            //     request.body.object, request.body.price, request.body.image,
-            //     request.body.firstavail, request.body.lastavail);
 
-            // CSV Method
-            // write to the csv out.csv
-            // take the "//" from below if not working
-            // var fs = require("fs");
-            // if (!fs.existsSync('out.csv')) {
-            //     writer = csvWriter({ headers: ["id", "name", "email", "school", "gradYear", "phone", "object", "price", "image", "firstAvail", "lastAvail"]});
-            //     writer.pipe(fs.createWriteStream('out.csv'));
-            //     writer.write([newListing.id, newListing.name, newListing.email, newListing.school, newListing.gradYear, newListing.phone, newListing.object, newListing.price, newListing.image, newListing.firstAvail, newListing.lastAvail]);
-            // } else {
-            //     writer = csvWriter({sendHeaders: false});
+            return response.redirect('/listing/' + success);
 
-            //     writer.pipe(fs.createWriteStream('out.csv', {flags: 'a'}));
-            //     writer.write({
-            //         header1:newListing.id,
-            //         header2:newListing.name,
-            //         header3:newListing.email,
-            //         header4:newListing.school,
-            //         header5:newListing.gradYear,
-            //         header6:newListing.phone,
-            //         header7:newListing.object,
-            //         header8:newListing.price,
-            //         header9:newListing.image,
-            //         header10:newListing.firstAvail,
-            //         header11:newListing.lastAvail,
-            //     });
-            // }
-            // writer.end();
-            // CSV writing ends here
-        }
+            }
+
         contextData.errors = errors;
     } else {
         console.log('This is a GET request');
@@ -188,22 +112,10 @@ function formSubmit(request, response) {
 }
 
 
+
 function rentSubmit(request, response) {
     console.log(id_listing);
-    // CSV Method
-    // csv.fromPath('rentees.csv', {headers: true})
-    //   .on('data', function(data) {
-    //     renteesRows.push(data);
 
-    //     // `data` is an array containing the values
-    //     // of the current line in the file
-    //     //console.log(data);
-    //   })
-    //   .on('end', function() {
-    //     console.log('Parsing rentees complete!');
-    //     num2 = Math.max(...renteesRows.map(x => x.id));
-    //     console.log(num2);
-    //   });
 
     // Start with an empty array of errors
     const contextData = {
@@ -242,32 +154,6 @@ function rentSubmit(request, response) {
             renterInfo.id = num2 + 1;
             renterInfo2 = renterInfo;
 
-            // CSV Method
-            //     if (!fs.existsSync('rentees.csv')){
-            //         writer = csvWriter({ headers: ["id", "name", "email", "phone", "address", "object", "firstrent", "endrent", "delivery", "id_listing"]});
-            //         writer.pipe(fs.createWriteStream('rentees.csv'));
-            //         writer.write([renterInfo.id, renterInfo.name, renterInfo.email, renterInfo.phone, renterInfo.address, renterInfo.object, renterInfo.firstrent, renterInfo.endrent, renterInfo.delivery, renterInfo.id_listing]);
-            //     }
-            //     else{
-            //     writer = csvWriter({sendHeaders: false});
-
-            //     writer.pipe(fs.createWriteStream('rentees.csv', {flags: 'a'}));
-            //     writer.write({
-            //         header1:renterInfo.id,
-            //         header2:renterInfo.name,
-            //         header3:renterInfo.email,
-            //         header4:renterInfo.phone,
-            //         header5:renterInfo.address,
-            //         header6:renterInfo.object,
-            //         header7:renterInfo.firstrent,
-            //         header8:renterInfo.endrent,
-            //         header9:renterInfo.delivery,
-            //         header10:renterInfo.id_renter,
-            //     });
-            //     }
-            // writer.end();
-            // csv writing ends here
-
             //return response.redirect(`/thanks/${renterInfo.id}`);
             return response.redirect('/thanks');
         }
@@ -282,75 +168,54 @@ function rentSubmit(request, response) {
 }
 
 
-function itemDetails(req, response) {
+async function itemDetails(req, response) {
     // get listing ID
-    const listingID = parseInt(req.params.listingID, 10);
+    const item_number = parseInt(req.params.listingID, 10);
+    //console.log("blabla" + typeof(listingID) + listingID );
     // PostgreSQL Method
-    // query listing
-    client.connect();
-    client.query('SELECT * FROM listings WHERE id = $1;', [listingID], (err, res) => {
-        if (err) {
-            throw err;
-        } else {
-            theList = res.rows[0];
+    // line below commented since we only need one connection.
+    //pool.connect();
+    // WE HAVE TO CHECK WHEN IS THE RIGHT TIME TO DISCCONECT FROM POSTGRES
+    //pool.query('SELECT * FROM listings WHERE id = $1;', [listingID], (err, res) => {
+    //    if (err) {
+    //        throw err;
+    //    } else {
+
+//    let ident = new Promise((resolve, reject) => {
+//        const listingID = parseInt(req.params.listingID, 10);
+//        console.log("blabla" + typeof(listingID) + listingID );
+//        resolve(listingID);
+//    });
+
+
+
+//    ident.then((k) => {
+async function seila(){
+        const theList = await quering(item_number);
+        return theList;
+}
+
+
+        seila().then((s) => {
+        console.log("LIST " + s);
+        //console.log("item_number " + item_number);
+            //theList = res.rows[0];
             // define context data
             const contextData = {
-                id: listingID,
+                id: s.id,
                 title: 'Listing\'s Details',
-                object: theList.object,
-                price: theList.price,
-                image: theList.image,
-                firstavail: theList.firstavail,
-                lastavail: theList.lastavail,
-                pickup: 'Pickup at Yale SOM',
+                object: s.object,
+                price: s.price,
+                im: s.image,
+                firstavail: s.firstavail,
+                lastavail: s.lastavail,
                 delivery: 'Delivery',
             };
-            if (!res.rows) {
-                response.send('Could not find listing! Error: 404');
-            } else {
+                console.log(contextData);
                 response.render('item_details', contextData);
-            }
-        }
-    });
-
-    // CSV Method
-    // const listingID = parseInt(req.params.listingID, 10);
-    //     csv.fromPath('out.csv', {headers: true})
-    //       .on('data', function(data) {
-    //         fileRows.push(data);
-
-    //         // `data` is an array containing the values of the current line in the file
-    //         //console.log(data);
-    //       })
-    //       .on('end', function() {
-    //         console.log('Getting ready...');
-    //         for (let i = 0; i < fileRows.length; i += 1) {
-    //                 if (listingID == fileRows[i].id) {
-    //                     // console.log(fileRows[i].id);
-    //                     theList = fileRows[i];
-    //                      // we need to store the ID of the add to link it to
-    //                     // an eventual rentee's request
-    //                     id_listing = listingID;
-    //                 }
-    //             }
-
-    //         const contextData = {
-    //             id: listingID,
-    //             title: 'Listing\'s Details',
-    //             object: theList.object,
-    //             price: theList.price,
-    //             image: theList.image,
-    //             firstAvail: theList.firstAvail,
-    //             lastAvail: theList.lastAvail,
-    //             pickup: 'Pickup at Yale SOM',
-    //             delivery: 'Delivery',
-    //         };
-    //         if (!theList) {
-    //             res.send('could not find listing! should send error page 404');
-    //         } else {
-    //             res.render('item_details', contextData);
-    //         }
-    //       });
+        });
+    //    });
+    //});
 }
 
 
@@ -395,15 +260,6 @@ function emailConfirm(req, res) {
 }
 
 
-function downloadlistings(request, response) {
-    response.download('out.csv');
-}
-
-
-function downloadrentees(request, response) {
-    response.download('rentees.csv');
-}
-
 
 module.exports = {
     index,
@@ -412,34 +268,51 @@ module.exports = {
     rentSubmit,
     itemDetails,
     emailConfirm,
-    downloadlistings,
-    downloadrentees,
 };
 
-/* ---------------> function to delete a row from reference: id
-/
-/
-// The id below will be used to reference the row (i.e. listing to be deleted)
-var idToSearchFor = 2;
-// read the file
-fs.readFile('csv.csv', 'utf8', function(err, data)
-{
+function storage(NAME, EMAIL, SCHOOL, GRADYEAR, PHONE, OBJECT, PRICE, IMAGE, FIRSTAVAIL, LASTAVAIL){
+    return new Promise(resolve => {
 
-    if (err)
-    {
-        // check and handle err
-    }
-    // Get an array of comma separated lines
-    // the slice 0 means "start fom row 0"
-    let linesExceptFirst = data.split('\n').slice(0);
-    // Turn that into a data structure we can parse (array of arrays)
-    let linesArr = linesExceptFirst.map(line=>line.split(','));
-    // Use filter to find the matching ID then return only those that don't matching
-    // deleting the found match
-    // Join then into a string with new lines
-    let output = linesArr.filter(line=>parseInt(line[0]) !== idToSearchFor).join("\n");
-    // Write out new file
-    fs.writeFileSync('new.csv', output);
+    pool.connect();
+    pool.query('INSERT INTO listings (name, email, school, gradyear, phone, object, price, image, firstavail, lastavail) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id;', [NAME, EMAIL, SCHOOL, GRADYEAR, PHONE, OBJECT, PRICE, IMAGE, FIRSTAVAIL, LASTAVAIL], (err, res) => {
+        if (err) {
+            throw err;
+        } else {
+            var listingID = parseInt(res.rows[0].id, 10);
 
+            console.log("line 92 listingID:",  listingID);
+            resolve(listingID);
+        }
+    });
 });
-*/
+}
+
+
+async function quering(code2){
+    const listID = await listIdentification(code2);
+    return new Promise(resolve => {
+    pool.query('SELECT * FROM listings WHERE id = $1;', [listID], (err, res) => {
+        if (err) {
+            throw err;
+        } else {
+            const theList = res.rows[0];
+            resolve(theList);
+        }
+    });
+});
+}
+
+
+
+async function listIdentification(code){
+    return new Promise((resolve, reject) => {
+        try {
+            const listingID = parseInt(code, 10);
+            console.log("check " + typeof(listingID) + listingID );
+            resolve(listingID);
+        } catch (error)
+        {
+            reject(error);
+        }
+        });
+}

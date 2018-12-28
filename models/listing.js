@@ -4,7 +4,7 @@
 const { Client } = require('pg');
 
 const client = new Client({
-    connectionString: 'postgres://noienswmyhkwiz:a75a21b145dffc1a7b88967912a9f965f37040eba69eab219c24822abe0fb88e@ec2-54-243-150-10.compute-1.amazonaws.com:5432/da95k05j4qmcl',
+    connectionString: 'postgres://srtkdectxghkmw:8c7ca2be49603ed01ded285a6250e2d1ba5d16329d7ed22e796edbb78a3758a6@ec2-54-243-212-227.compute-1.amazonaws.com:5432/d2lk88cg6v0e33',
     ssl: true,
 });
 
