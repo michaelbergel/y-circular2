@@ -171,35 +171,31 @@ function rentSubmit(request, response) {
 async function itemDetails(req, response) {
     // get listing ID
     const item_number = parseInt(req.params.listingID, 10);
-    //console.log("blabla" + typeof(listingID) + listingID );
-    // PostgreSQL Method
-    // line below commented since we only need one connection.
-    //pool.connect();
-    // WE HAVE TO CHECK WHEN IS THE RIGHT TIME TO DISCCONECT FROM POSTGRES
-    //pool.query('SELECT * FROM listings WHERE id = $1;', [listingID], (err, res) => {
-    //    if (err) {
-    //        throw err;
-    //    } else {
 
-//    let ident = new Promise((resolve, reject) => {
-//        const listingID = parseInt(req.params.listingID, 10);
-//        console.log("blabla" + typeof(listingID) + listingID );
-//        resolve(listingID);
-//    });
+    // line below will be used to test if image has proper and valid URL
+    // without this validation the code will crash.
+    var pattern = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+
+    // this function will return the array with the listin's info
+    async function arr(){
+            // the await ensures the async code won´t continue forward until the fn quering is done
+            // see fn quering in the bottom of code
+            const theList = await quering(item_number);
+            return theList;
+    }
 
 
-
-//    ident.then((k) => {
-async function seila(){
-        const theList = await quering(item_number);
-        return theList;
-}
-
-
-        seila().then((s) => {
+        // the syntax then(s), s is whatever is resolved/returned from the function arr
+        // mwhich in this  case, is the array theList. So s is a reference to theList!
+        arr().then((s) => {
         console.log("LIST " + s);
-        //console.log("item_number " + item_number);
-            //theList = res.rows[0];
+
+        // if the URL isn't valid, return empty string to avoid crashing code
+        if (!pattern.test(s.image))
+        {
+              s.image="";
+        }
+
             // define context data
             const contextData = {
                 id: s.id,
