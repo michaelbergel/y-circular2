@@ -31,7 +31,7 @@ const pool = new Pool({
 // handles a request, writing the response.
 function index(request, response) {
     // PostgreSQL Method
-    client.connect();
+    client.connect(); // Apparently no need to close the connection: https://github.com/brianc/node-postgres/issues/1670
     client.query('SELECT * FROM listings ORDER BY id DESC;', (err, res) => {
         if (err) {
             throw err;
