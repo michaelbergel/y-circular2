@@ -23,9 +23,9 @@ function addListingSQL(name, email, school, gradyear, phone, object, price, imag
 }
 
 // Add rentee info to rentee SQL table
-function addRenteeSQL(name, email, phone, address, object, firstrent, endrent, delivery, id_listing) {
+function addRenteeSQL(name, email, phone, address, object, firstrent, endrent, delivery, id_listing, price, daterequested) {
     client.connect();
-    client.query('INSERT INTO rentees (name, email, phone, address, object, firstrent, endrent, delivery, id_listing) values ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id;', [name, email, phone, address, object, firstrent, endrent, delivery, id_listing], (err) => {
+    client.query('INSERT INTO rentees (name, email, phone, address, object, firstrent, endrent, delivery, id_listing, price, daterequested) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING id;', [name, email, phone, address, object, firstrent, endrent, delivery, id_listing, price, daterequested], (err) => {
         if (err) throw err;
         // console.log(res.rows);
         // client.end();

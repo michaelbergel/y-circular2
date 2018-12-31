@@ -1,4 +1,4 @@
-create table listings (
+CREATE TABLE listings (
     id          serial primary key,
     name        varchar,
     email       varchar,
@@ -12,7 +12,7 @@ create table listings (
     lastavail   varchar
 );
 
-create table rentees (
+CREATE TABLE rentees (
     id          serial primary key,
     name        varchar,
     email       varchar,
@@ -22,10 +22,15 @@ create table rentees (
     firstRent   varchar,
     endRent     varchar,
     delivery    varchar,
-    id_listing   int
+    id_listing  int,
+    price       int,
+    daterequested     varchar
 );
 
 heroku pg:psql --> connect to db via CLI and manage db
     \dt --> view all tables
     \q option --> list of psql command options
 
+DROP TABLE xxx; -> to drop a table
+SELECT * FROM xxx; -> to see everyt on table
+SELECT * FROM xxx WHERE id = y; -> to see everyt on table where id = y

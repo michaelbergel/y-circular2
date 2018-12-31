@@ -2,6 +2,18 @@
 
 {% block body %}
 
+{% if errors %}
+<ul class="form-errors">
+    {% for error in errors %}
+        <li class="p-3 mb-2 bg-danger text-white">
+            {{ error }}
+        </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+
 <div class="container">
     <p><h1 id="object">{{ object }}</h1></p>
     <p><div>Price per Day: <span class="list-group-item-text" id="price">{{ price }}</span></div></p>

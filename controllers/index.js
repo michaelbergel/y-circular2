@@ -113,8 +113,21 @@ async function formSubmit(request, response) {
 
 
 
-function rentSubmit(request, response) {
-    console.log(id_listing);
+async function rentSubmit(request, response) {
+
+    var today = new Date().toLocaleString();
+
+    // get listing ID
+    //const item_number = parseInt(request.params.id, 10);
+
+    // this function will return the array with the listin's inf
+    //async function arr(){
+            // the await ensures the async code won´t continue forward until the fn quering is done
+            // see fn quering in the bottom of code
+    //    const theList = await quering(item_number);
+    //    return theList;
+    //}
+
 
 
     // Start with an empty array of errors
@@ -132,30 +145,54 @@ function rentSubmit(request, response) {
             // alert('Please fill out your name');
         }
 
+
+        if (itemDetail === undefined || itemDetail.length == 0 || itemDetail.object === undefined ||itemDetail.price === undefined ) {
+            errors.push('Could not proceed with request. Please try again. Error: listing detail missing');
+            // alert('Please fill out your name');
+        }
+
+
+
         if (errors.length === 0) {
+
+
+        // the syntax then(s), s is whatever is resolved/returned from the function arr
+        // mwhich in this  case, is the array theList. So s is a reference to theList!
+        //arr().then((s) => {
+        //console.log("LIST " + s);
+
+
         // PostgreSQL Method
             store.addRenteeSQL(request.body.name, request.body.email,
-                request.body.phone, request.body.address, theList.object,
-                request.body.firstrent, request.body.endrent, request.body.delivery,
-                theList.id);
+                request.body.phone, request.body.address, itemDetail.object,
+                request.body.firstRent, request.body.endRent, request.body.delivery,
+                itemDetail.id, itemDetail.price, today);
 
-        // Create a new listing! Find a good id (e.g. max existing id + 1)
+
             const renterInfo = {
                 name: request.body.name,
                 email: request.body.email,
                 phone: request.body.phone,
+                object: itemDetail.object,
                 address: request.body.address,
-                object: theList.object,
                 firstRent: request.body.firstRent,
                 endRent: request.body.endRent,
                 delivery: request.body.delivery,
-                id_listing: theList.id,
+                id_listing: itemDetail.id,
+                price: itemDetail.price,
+                date: today
             };
-            renterInfo.id = num2 + 1;
-            renterInfo2 = renterInfo;
+            // this is the interested party´s email
+            itemDetail.emailRentee = renterInfo.email;
+
+            //renterInfo.id = num2 + 1;
+            //renterInfo2 = renterInfo;
+
+            console.log(renterInfo);
 
             //return response.redirect(`/thanks/${renterInfo.id}`);
-            return response.redirect('/thanks');
+           return response.redirect('/thanks');
+        //});
         }
 
         contextData.errors = errors;
@@ -167,6 +204,8 @@ function rentSubmit(request, response) {
     return response.render('rent', contextData);
 }
 
+//declaring outside so the functions email and rentSubmit can access it
+let itemDetail = [];
 
 async function itemDetails(req, response) {
     // get listing ID
@@ -197,7 +236,7 @@ async function itemDetails(req, response) {
         }
 
             // define context data
-            const contextData = {
+            itemDetail = {
                 id: s.id,
                 title: 'Listing\'s Details',
                 object: s.object,
@@ -205,10 +244,11 @@ async function itemDetails(req, response) {
                 im: s.image,
                 firstavail: s.firstavail,
                 lastavail: s.lastavail,
+                renterEmail: s.email,
                 delivery: 'Delivery',
             };
-                console.log(contextData);
-                response.render('item_details', contextData);
+                console.log(itemDetail);
+                response.render('item_details', itemDetail);
         });
     //    });
     //});
@@ -216,11 +256,21 @@ async function itemDetails(req, response) {
 
 
 function emailConfirm(req, res) {
-        // console.log(theList.email);
-        // console.log(renterInfo2.email);
-        if (!theList) {
-            res.send('Could not find listing! Error: 404');
-        }   else {
+         console.log(itemDetail.emailRentee);
+         console.log(itemDetail.renterEmail);
+
+         const contextD = {
+            title: 'Thanks for using YCircular!',
+            errors: [],
+        };
+
+
+
+
+        if (itemDetail === undefined || itemDetail.length == 0 || itemDetail.emailRentee === undefined ||itemDetail.renterEmail === undefined ) {
+            contextD.errors.push('Could not proceed with your request. Please try again! Error: itemDetail');
+            res.render('item_details', contextD);
+        }  else {
 
                 var transporter = nodemailer.createTransport({
                     service: 'Gmail',
@@ -230,18 +280,20 @@ function emailConfirm(req, res) {
                     }
                 });
 
-                var text = "Object:" + theList.object + ". Renter: " + theList.email + ". Interested: " + renterInfo2.email + ". You may reach out to each other to arrange delivery details. Reach out to marina.roriz@yale.edu for further assitance, if needed.";
+                var text = "Object:" + itemDetail.object + ". Renter: " + itemDetail.renterEmail + ". Interested: " + itemDetail.emailRentee + ". You may reach out to each other to arrange delivery details. Reach out to marina.roriz@yale.edu for further assitance, if needed.";
 
                 var mailOptions = {
                 from: 'ycircularllc@gmail.com', // sender address
-                to: theList.email + ","+ renterInfo2.email, // list of receivers
-                subject: `Thanks for using Y Circular! Item: ${theList.object}, ID:${theList.id}`, // Subject line
+                to: itemDetail.renterEmail + ","+ itemDetail.emailRentee, // list of receivers
+                subject: `Thanks for using Y Circular! Item: ${itemDetail.object}, ID:${itemDetail.id}`, // Subject line
                 // text: text //, // plaintext body
                 html: text // You can choose to send an HTML body instead
                 };
 
-                res.render('thanks');
+                console.log('Message sent!');
+                res.render('thanks', contextD);
 
+                // the block below is probably unnecessary - if we get an error, we will catch it above in the if statement
                 transporter.sendMail(mailOptions, function(error, info){
                     if(error){
                         console.log(error);
@@ -253,6 +305,8 @@ function emailConfirm(req, res) {
                 });
 
             }
+
+
 }
 
 
