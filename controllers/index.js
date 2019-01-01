@@ -280,7 +280,7 @@ function emailConfirm(req, res) {
                     }
                 });
 
-                var text = "Object:" + itemDetail.object + ". Renter: " + itemDetail.renterEmail + ". Interested: " + itemDetail.emailRentee + ". You may reach out to each other to arrange delivery details. Reach out to marina.roriz@yale.edu for further assitance, if needed.";
+                var text = "Object: " + itemDetail.object + ". Renter: " + itemDetail.renterEmail + ". Interested: " + itemDetail.emailRentee + ". You may reach out to each other to arrange delivery details. Reach out to marina.roriz@yale.edu for further assitance, if needed.";
 
                 var mailOptions = {
                 from: 'ycircularllc@gmail.com', // sender address
